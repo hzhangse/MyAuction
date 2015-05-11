@@ -11,16 +11,16 @@
 		http://www.springframework.org/schema/data/mongo
 		http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 	
-	<mongo:mongo id="mongo"  host="127.0.0.1" port="27017"	/>
+	<mongo:mongo id="mongo"  host="mongo-1-2.jae.jd.com" port="27017"	/>
 	
 	<bean id="userCredentials" class="org.springframework.data.authentication.UserCredentials">
-		<constructor-arg name="username"  value="auction"/>
-		<constructor-arg name="password"  value="auction"/>
+		<constructor-arg name="username"  value="x0Wc3gMD"/>
+		<constructor-arg name="password"  value="78C8893709EI"/>
 	</bean>
 	
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg ref="mongo" />
-		<constructor-arg value="auction" />
+		<constructor-arg value="81788090-26199299_mo_r63u055f" />
 		<constructor-arg ref="userCredentials" />
 	</bean>
 	
