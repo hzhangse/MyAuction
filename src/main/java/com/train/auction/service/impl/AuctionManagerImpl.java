@@ -1,17 +1,31 @@
 package com.train.auction.service.impl;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 import org.apache.log4j.Logger;
-
-import java.util.*;
-
-import org.springframework.mail.MailException;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
-import com.train.auction.business.*;
-import com.train.auction.dao.*;
+import com.train.auction.business.BidBean;
+import com.train.auction.business.ItemBean;
+import com.train.auction.business.KindBean;
+import com.train.auction.dao.AuctionUserDao;
+import com.train.auction.dao.BidDao;
+import com.train.auction.dao.ItemDao;
+import com.train.auction.dao.KindDao;
+import com.train.auction.dao.StateDao;
+
 import com.train.auction.exception.AuctionException;
-import com.train.auction.model.*;
+import com.train.auction.model.AuctionUser;
+import com.train.auction.model.Bid;
+import com.train.auction.model.Item;
+import com.train.auction.model.Kind;
+import com.train.auction.model.State;
 import com.train.auction.service.AuctionManager;
 
 
@@ -64,7 +78,7 @@ public class AuctionManagerImpl implements AuctionManager
 	 * @param winerId 赢取者的ID
 	 * @return 赢取者获得的全部物品
 	 */
-	public List<ItemBean> getItemByWiner(Integer winerId)
+	public List<ItemBean> getItemByWiner(BigInteger winerId)
 		throws AuctionException
 	{
 		try
@@ -86,6 +100,22 @@ public class AuctionManagerImpl implements AuctionManager
 		}
 	}
 
+	private State getState(String name) {
+		Query stq = stateDao.getQuery(new State(null, name));
+		return stateDao.findOne(stq);
+	}
+
+	private Kind getKind(String name) {
+		Query q = kindDao.getQuery(new Kind(null, name, null));
+		Kind kind = kindDao.findOne(q);
+		return kind;
+	}
+
+	private AuctionUser getUser(String name) {
+		Query uq = userDao.getQuery(new AuctionUser(null, name, null, null));
+		AuctionUser owner = userDao.findOne(uq);
+		return owner;
+	}
 	/**
 	 * 查询流拍的全部物品
 	 * @return 全部流拍物品
@@ -93,8 +123,11 @@ public class AuctionManagerImpl implements AuctionManager
 	public List<ItemBean> getFailItems() throws AuctionException
 	{
 		try
-		{
-			List<Item> items = itemDao.findItemByState(3);
+		{	
+			BigInteger stateId = BigInteger.valueOf(3);
+			
+			
+			List<Item> items = itemDao.findItemByState(stateId);
 			List<ItemBean> result = new ArrayList<ItemBean>();
 			for (Item item : items )
 			{
@@ -117,7 +150,7 @@ public class AuctionManagerImpl implements AuctionManager
  	 * @param pass 登录的密码
 	 * @return 登录成功返回用户ID，否则返回-1
 	 */
-	public int validLogin(String username , String pass) throws AuctionException
+	public BigInteger validLogin(String username , String pass) throws AuctionException
 	{
 		try
 		{
@@ -126,7 +159,7 @@ public class AuctionManagerImpl implements AuctionManager
 			{
 				return u.getId();
 			}
-			return -1;
+			return BigInteger.valueOf(-1);
 		}
 		catch (Exception e)
 		{
@@ -140,7 +173,7 @@ public class AuctionManagerImpl implements AuctionManager
 	 * @param userId 竞价用户的ID
 	 * @return 用户的全部出价
 	 */
-	public List<BidBean> getBidByUser(Integer userId) throws AuctionException
+	public List<BidBean> getBidByUser(BigInteger userId) throws AuctionException
 	{
 		try
 		{
@@ -167,7 +200,7 @@ public class AuctionManagerImpl implements AuctionManager
 	 * @param userId 所属者的ID
 	 * @return 属于当前用户的、处于拍卖中的全部物品。
 	 */
-	public List<ItemBean> getItemsByOwner(Integer userId)
+	public List<ItemBean> getItemsByOwner(BigInteger userId)
 		throws AuctionException
 	{
 		try
@@ -223,8 +256,8 @@ public class AuctionManagerImpl implements AuctionManager
 	* @param userId 添加者的ID
 	* @return 新增物品的主键
 	*/
-	public int addItem(String name , String desc , String remark ,
-		double initPrice , int avail , int kind , Integer userId)
+	public BigInteger addItem(String name , String desc , String remark ,
+		double initPrice , int avail , BigInteger kind , BigInteger userId)
 		throws AuctionException
 	{
 		System.out.println("userId ===" + userId);
@@ -244,7 +277,7 @@ public class AuctionManagerImpl implements AuctionManager
 			item.setEndtime(c.getTime());
 			item.setInitPrice(new Double(initPrice));
 			item.setMaxPrice(new Double(initPrice));
-			item.setItemState(stateDao.get(1));
+			item.setItemState(stateDao.get(BigInteger.valueOf(1)));
 			item.setKind(k);
 			item.setOwner(owner);
 			//持久化Item对象
@@ -265,7 +298,7 @@ public class AuctionManagerImpl implements AuctionManager
 	 * @param desc 种类描述
 	 * @return 新增种类的主键
 	 */ 
-	public int addKind(String name , String desc)
+	public BigInteger addKind(String name , String desc)
 		throws AuctionException
 	{
 		try
@@ -288,7 +321,7 @@ public class AuctionManagerImpl implements AuctionManager
 	 * @param kindId 种类id;
 	 * @return 该类的全部产品
 	 */
-	public List<ItemBean> getItemsByKind(int kindId)
+	public List<ItemBean> getItemsByKind(BigInteger kindId)
 		throws AuctionException
 	{
 		List<ItemBean> result = new ArrayList<ItemBean>();
@@ -315,7 +348,7 @@ public class AuctionManagerImpl implements AuctionManager
 	 * @param kindId 种类id;
 	 * @return 该种类的名称
 	 */
-	public String getKind(int kindId) throws AuctionException
+	public String getKind(BigInteger kindId) throws AuctionException
 	{
 		try
 		{
@@ -338,7 +371,7 @@ public class AuctionManagerImpl implements AuctionManager
 	 * @param itemId 物品id;
 	 * @return 指定id对应的物品
 	 */
-	public ItemBean getItem(int itemId)
+	public ItemBean getItem(BigInteger itemId)
 		throws AuctionException
 	{
 		try
@@ -362,7 +395,7 @@ public class AuctionManagerImpl implements AuctionManager
 	 * @param userId 竞价用户的ID
 	 * @return 返回新增竞价记录的ID
 	 */
-	public int addBid(int itemId , double bidPrice , Integer userId)
+	public BigInteger addBid(BigInteger itemId , double bidPrice , BigInteger userId)
 		throws AuctionException
 	{
 		try
@@ -406,7 +439,9 @@ public class AuctionManagerImpl implements AuctionManager
 	{
 		try
 		{
-			List itemList = itemDao.findItemByState(1);
+			BigInteger stateId = BigInteger.valueOf(1);
+			
+			List itemList = itemDao.findItemByState(stateId);
 			for (int i = 0 ; i < itemList.size() ; i++ )
 			{
 				Item item = (Item)itemList.get(i);
@@ -421,13 +456,13 @@ public class AuctionManagerImpl implements AuctionManager
 						//将该竞价者设为赢取者
 						item.setWiner(au);
 						//修改物品的状态成为“被赢取”
-						item.setItemState(stateDao.get(2));
+						item.setItemState(stateDao.get(BigInteger.valueOf(2)));
 						itemDao.save(item);
 					}
 					else
 					{
 						//设置该物品的状态为“流拍”
-						item.setItemState(stateDao.get(3));
+						item.setItemState(stateDao.get(BigInteger.valueOf(3)));
 						itemDao.save(item);
 					}
 				}

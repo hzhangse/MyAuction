@@ -1,17 +1,17 @@
 package com.train.auction.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
-import com.train.auction.business.*;
-import com.train.auction.model.*;
+import com.train.auction.model.Kind;
 
-public interface KindDao  
+public interface KindDao extends IDao<Kind> 
 {
 	/**
 	 * 根据id查找种类
 	 * @param id 需要查找的种类的id
 	 */
-	Kind get(Integer id);
+	Kind get(BigInteger id);
 
 	/**
 	 * 增加种类
@@ -29,7 +29,7 @@ public interface KindDao
 	 * 删除种类
 	 * @param id 需要删除的种类id
 	 */
-	void delete(Integer id);
+	void delete(BigInteger id);
 
 	/**
 	 * 删除种类

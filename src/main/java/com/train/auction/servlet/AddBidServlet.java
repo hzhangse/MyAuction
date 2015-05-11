@@ -1,12 +1,12 @@
 package com.train.auction.servlet;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import java.io.IOException;
+import java.math.BigInteger;
 
-import java.io.*;
-
-import org.json.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.train.auction.service.AuctionManager;
 import com.train.auction.servlet.base.BaseServlet;
@@ -20,7 +20,7 @@ public class AddBidServlet extends BaseServlet
 		throws IOException , ServletException
 	{
 		// 获取userId
-		Integer userId = (Integer)request.getSession(true)
+    	BigInteger userId = (BigInteger)request.getSession(true)
 			.getAttribute("userId");
 		request.setCharacterEncoding("gbk");
 		// 获取请求参数
@@ -29,12 +29,12 @@ public class AddBidServlet extends BaseServlet
 		// 获取业务逻辑组件
 		AuctionManager auctionManager = (AuctionManager)getCtx().getBean("mgr");
 		// 调用业务方法来添加竞价
-		int bidId = auctionManager.addBid(Integer.parseInt(itemId)
+		BigInteger bidId = auctionManager.addBid(new BigInteger(itemId)
 			, Double.parseDouble(bidPrice)
 			, userId);
 		response.setContentType("text/html; charset=GBK");
 		// 竞价成功
-		if (bidId > 0)
+		if (bidId.doubleValue() > 0)
 		{
 			response.getWriter().println("恭喜您，竞价成功!");
 		}

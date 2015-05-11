@@ -1,12 +1,13 @@
 package com.train.auction.dao.impl;
 
-import java.util.*;
+import java.math.BigInteger;
+import java.util.List;
 
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.train.auction.business.*;
-import com.train.auction.dao.*;
-import com.train.auction.model.*;
+import com.train.auction.dao.AuctionUserDao;
+import com.train.auction.model.AuctionUser;
 
 
 public class AuctionUserDaoHibernate
@@ -16,7 +17,7 @@ public class AuctionUserDaoHibernate
 	 * 根据id查找用户
 	 * @param id 需要查找的用户id
 	 */
-	public AuctionUser get(Integer id)
+	public AuctionUser get(BigInteger id)
 	{
 		return (AuctionUser)getHibernateTemplate()
 			.get(AuctionUser.class , id);
@@ -44,7 +45,7 @@ public class AuctionUserDaoHibernate
 	 * 删除用户
 	 * @param id 需要删除的用户id
 	 */ 
-	public void delete(Integer id)
+	public void delete(BigInteger id)
 	{
 		getHibernateTemplate().delete(get(id));
 	}
@@ -85,6 +86,16 @@ public class AuctionUserDaoHibernate
 		{
 			return (AuctionUser)ul.get(0);
 		}
+		return null;
+	}
+
+	public Query getQuery(AuctionUser criteria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public AuctionUser findOne(Query query) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

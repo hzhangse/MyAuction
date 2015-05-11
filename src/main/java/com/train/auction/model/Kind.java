@@ -1,16 +1,21 @@
 package com.train.auction.model;
 
-import java.util.*;
+import java.math.BigInteger;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 public class Kind
 {
 	//标识属性
-	private Integer id;
+	private BigInteger id;
 	//种类名
 	private String kindName;
 	//种类描述
 	private String kindDesc;
 	//该种类下的所有物品
+	@DBRef
 	private Set<Item> items = new HashSet<Item>();
 
 	//无参数的构造器
@@ -18,7 +23,7 @@ public class Kind
 	{
 	}
 	//初始化全部基本属性的构造器
-	public Kind(Integer id , String kindName , String kindDesc)
+	public Kind(BigInteger id , String kindName , String kindDesc)
 	{
 		this.id = id;
 		this.kindName = kindName;
@@ -26,11 +31,11 @@ public class Kind
 	}
 
 	//id属性的setter和getter方法
-	public void setId(Integer id)
+	public void setId(BigInteger id)
 	{
 		this.id = id;
 	}
-	public Integer getId()
+	public BigInteger getId()
 	{
 		return this.id;
 	}

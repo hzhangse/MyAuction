@@ -1,12 +1,12 @@
 package com.train.auction.servlet;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import java.io.IOException;
+import java.math.BigInteger;
 
-import java.io.*;
-
-import org.json.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.train.auction.service.AuctionManager;
 import com.train.auction.servlet.base.BaseServlet;
@@ -26,10 +26,10 @@ public class AddKindServlet extends BaseServlet
 		// 获取系统业务逻辑组件
 		AuctionManager auctionManager = (AuctionManager)getCtx().getBean("mgr");
 		// 调用业务逻辑组件的业务方法添加种类
-		int kindId = auctionManager.addKind(name , desc);
+		BigInteger kindId = auctionManager.addKind(name , desc);
 		response.setContentType("text/html; charset=GBK");
 		// 添加成功
-		if (kindId > 0)
+		if (kindId.compareTo(new BigInteger("0"))>1)
 		{
 			response.getWriter().println("恭喜您，种类添加成功!");
 		}

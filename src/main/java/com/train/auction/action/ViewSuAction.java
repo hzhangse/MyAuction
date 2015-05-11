@@ -1,11 +1,11 @@
 package com.train.auction.action;
 
-import java.util.*;
+import java.math.BigInteger;
+import java.util.List;
+import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.train.auction.action.base.BaseAction;
-import com.train.auction.exception.AuctionException;
-import com.train.auction.service.AuctionManager;
 
 
 public class ViewSuAction extends BaseAction
@@ -15,7 +15,7 @@ public class ViewSuAction extends BaseAction
 	public String execute() throws Exception
 	{
 		Map session = ActionContext.getContext().getSession();
-		Integer userId = (Integer)session.get("userId");
+		BigInteger userId = (BigInteger)session.get("userId");
 		setItems(mgr.getItemByWiner(userId));
 		return SUCCESS;
 	}

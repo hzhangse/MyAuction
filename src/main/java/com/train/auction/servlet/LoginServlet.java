@@ -1,12 +1,15 @@
 package com.train.auction.servlet;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import java.io.IOException;
+import java.math.BigInteger;
 
-import java.io.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import org.json.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.train.auction.service.AuctionManager;
 import com.train.auction.servlet.base.BaseServlet;
@@ -24,10 +27,10 @@ public class LoginServlet extends BaseServlet
 		// 获取系统的业务逻辑组件
 		AuctionManager auctionManager = (AuctionManager)getCtx().getBean("mgr");
 		// 验证用户登录
-		int userId = auctionManager.validLogin(user , pass);
+		BigInteger userId = auctionManager.validLogin(user , pass);
 		response.setContentType("text/html; charset=GBK");
 		// 登录成功
-		if (userId > 0)
+		if (userId.compareTo(new BigInteger("0"))>1)
 		{
 			request.getSession(true).setAttribute("userId" , userId);
 		}

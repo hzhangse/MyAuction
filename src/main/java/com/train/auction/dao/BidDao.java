@@ -1,18 +1,19 @@
 package com.train.auction.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
-import com.train.auction.business.*;
-import com.train.auction.model.*;
+import com.train.auction.model.AuctionUser;
+import com.train.auction.model.Bid;
 
-public interface BidDao  
+public interface BidDao  extends IDao<Bid>
 {
 	/**
 	 * 根据主键查找竞价记录
 	 * @param bidId 竞价id;
 	 * @return id对应的竞价记录
 	 */
-	Bid get(Integer bidId);
+	Bid get(BigInteger bidId);
 
 	/**
 	 * 保存竞价记录
@@ -30,7 +31,7 @@ public interface BidDao
 	 * 删除竞价记录
 	 * @param id 需要删除的竞价id
 	 */
-	void delete(Integer id);
+	void delete(BigInteger id);
 
 	/**
 	 * 删除竞价
@@ -44,7 +45,7 @@ public interface BidDao
 	 * @return 用户对应的全部
 	 * @return 用户对应的全部竞价
 	 */
-	List<Bid> findByUser(Integer userId);
+	List<Bid> findByUser(BigInteger userId);
 
 	/**
 	 * 根据物品id，以及出价查询用户
@@ -52,5 +53,5 @@ public interface BidDao
 	 * @param price 竞价的价格
 	 * @return 对指定物品、指定竞价对应的用户
 	 */
-	AuctionUser findUserByItemAndPrice(Integer itemId , Double price);
+	AuctionUser findUserByItemAndPrice(BigInteger itemId , Double price);
 }

@@ -1,19 +1,24 @@
 package com.train.auction.model;
 
-import java.util.*;
+import java.math.BigInteger;
+import java.util.Date;
+
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 
 public class Bid
 {
 	//标识属性
-	private Integer id;
+	private BigInteger id;
 	//竞价的价格
 	private double bidPrice;
 	//竞价的日期
 	private Date bidDate;
 	//本次竞价所竞拍的物品
+	@DBRef
 	private Item bidItem;
 	//参与竞价的用户
+	@DBRef
 	private AuctionUser bidUser;
 
 
@@ -22,7 +27,7 @@ public class Bid
 	{
 	}
 	//初始化全部基本属性的构造器
-	public Bid(Integer id , double bidPrice , Date bidDate)
+	public Bid(BigInteger id , double bidPrice , Date bidDate)
 	{
 		this.id = id;
 		this.bidPrice = bidPrice;
@@ -30,11 +35,11 @@ public class Bid
 	}
 
 	//id属性的setter和getter方法
-	public void setId(Integer id)
+	public void setId(BigInteger id)
 	{
 		this.id = id;
 	}
-	public Integer getId()
+	public BigInteger getId()
 	{
 		return this.id;
 	}

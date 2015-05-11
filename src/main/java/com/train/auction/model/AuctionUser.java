@@ -1,12 +1,18 @@
 package com.train.auction.model;
 
-import java.util.*;
+import java.math.BigInteger;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 
 public class AuctionUser
 {
 	//标识属性
-	private Integer id;
+	@Id
+	private BigInteger id;
 	//用户名属性
 	private String username;
 	//密码属性
@@ -15,10 +21,13 @@ public class AuctionUser
 	private String email;
 
 	//根据属主关联的物品实体
+	@DBRef
 	private Set<Item> itemsByOwner = new HashSet<Item>();
 	//根据赢取者关联的物品实体
+	@DBRef
 	private Set<Item> itemsByWiner = new HashSet<Item>();
 	//该用户所参与的全部竞价
+	@DBRef
 	private Set<Bid> bids = new HashSet<Bid>();
 
 	//无参数的构造器
@@ -26,7 +35,7 @@ public class AuctionUser
 	{
 	}
 	//初始化全部基本属性的构造器
-	public AuctionUser(Integer id , String username ,
+	public AuctionUser(BigInteger id , String username ,
 		String userpass , String email)
 	{
 		this.id = id;
@@ -36,11 +45,11 @@ public class AuctionUser
 	}
 
 	//id属性的setter和getter方法
-	public void setId(Integer id)
+	public void setId(BigInteger id)
 	{
 		this.id = id;
 	}
-	public Integer getId()
+	public BigInteger getId()
 	{
 		return this.id;
 	}

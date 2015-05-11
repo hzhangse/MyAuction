@@ -1,13 +1,13 @@
 package com.train.auction.dao.impl;
 
-import java.util.*;
+import java.math.BigInteger;
+import java.util.List;
 
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-import org.hibernate.Hibernate;
 
-import com.train.auction.business.*;
-import com.train.auction.dao.*;
-import com.train.auction.model.*;
+import com.train.auction.dao.StateDao;
+import com.train.auction.model.State;
 
 
 public class StateDaoHibernate
@@ -17,7 +17,7 @@ public class StateDaoHibernate
 	 * 根据id查找状态
 	 * @param id 需要查找的状态id
 	 */
-	public State get(Integer id)
+	public State get(BigInteger id)
 	{
 		return (State)getHibernateTemplate().get(State.class , id);
 	}
@@ -43,7 +43,7 @@ public class StateDaoHibernate
 	 * 删除状态
 	 * @param id 需要删除的状态id
 	 */
-	public void delete(Integer id)
+	public void delete(BigInteger id)
 	{
 		getHibernateTemplate().delete(get(id));
 	}
@@ -64,5 +64,13 @@ public class StateDaoHibernate
 	public List<State> findAll()
 	{
 		return (List<State>)getHibernateTemplate().find("from State");
+	}
+	public Query getQuery(State criteria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public State findOne(Query query) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

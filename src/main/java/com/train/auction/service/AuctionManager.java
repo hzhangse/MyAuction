@@ -1,9 +1,11 @@
 package com.train.auction.service;
 
+import java.math.BigInteger;
 import java.util.List;
 
-import com.train.auction.business.*;
-import com.train.auction.dao.*;
+import com.train.auction.business.BidBean;
+import com.train.auction.business.ItemBean;
+import com.train.auction.business.KindBean;
 import com.train.auction.exception.AuctionException;
 
 
@@ -14,7 +16,7 @@ public interface AuctionManager
 	 * @param winerId 赢取者的ID
 	 * @return 赢取者获得的全部物品
 	 */
-	List<ItemBean> getItemByWiner(Integer winerId) 
+	List<ItemBean> getItemByWiner(BigInteger winerId) 
 		throws AuctionException;
 
 	/**
@@ -29,7 +31,7 @@ public interface AuctionManager
  	 * @param pass 登录的密码
 	 * @return 登录成功返回用户ID，否则返回-1
 	 */
-	int validLogin(String username , String pass)
+	BigInteger validLogin(String username , String pass)
 		throws AuctionException;
 
 	/**
@@ -37,7 +39,7 @@ public interface AuctionManager
 	 * @param userId 竞价用户的ID
 	 * @return 用户的全部出价
 	 */
-	List<BidBean> getBidByUser(Integer userId)
+	List<BidBean> getBidByUser(BigInteger userId)
 		throws AuctionException;
 
 	/**
@@ -45,7 +47,7 @@ public interface AuctionManager
 	 * @param userId 所属者的ID
 	 * @return 属于当前用户的、处于拍卖中的全部物品。
 	 */
-	List<ItemBean> getItemsByOwner(Integer userId)
+	List<ItemBean> getItemsByOwner(BigInteger userId)
 		throws AuctionException;
 
 	/**
@@ -64,8 +66,8 @@ public interface AuctionManager
 	* @param userId 添加者的ID
 	* @return 新增物品的主键
 	*/ 
-	int addItem(String name , String desc , String remark , 
-		double initPrice , int avail , int kind , Integer userId) 
+	BigInteger addItem(String name , String desc , String remark , 
+		double initPrice , int avail , BigInteger kind , BigInteger userId) 
 		throws AuctionException;
 
 	/**
@@ -74,28 +76,28 @@ public interface AuctionManager
 	 * @param desc 种类描述
 	 * @return 新增种类的主键
 	 */ 
-	int addKind(String name , String desc) throws AuctionException;
+	BigInteger addKind(String name , String desc) throws AuctionException;
 
 	/**
 	 * 根据产品分类，获取处于拍卖中的全部物品
 	 * @param kindId 种类id;
 	 * @return 该类的全部产品
 	 */
-	List<ItemBean> getItemsByKind(int kindId) throws AuctionException;
+	List<ItemBean> getItemsByKind(BigInteger kindId) throws AuctionException;
 
 	/**
 	 * 根据种类id获取种类名
 	 * @param kindId 种类id;
 	 * @return 该种类的名称
 	 */
-	String getKind(int kindId) throws AuctionException;
+	String getKind(BigInteger kindId) throws AuctionException;
 
 	/**
 	 * 根据物品id，获取物品
 	 * @param itemId 物品id;
 	 * @return 指定id对应的物品
 	 */
-	ItemBean getItem(int itemId) throws AuctionException;
+	ItemBean getItem(BigInteger itemId) throws AuctionException;
 
 	/**
 	 * 增加新的竞价，并对竞价用户发邮件通知
@@ -104,7 +106,7 @@ public interface AuctionManager
 	 * @param userId 竞价用户的ID
 	 * @return 返回新增竞价记录的ID
 	 */
-	int addBid(int itemId , double bidPrice ,Integer userId)
+	BigInteger addBid(BigInteger itemId , double bidPrice ,BigInteger userId)
 		throws AuctionException;
 
 	/**

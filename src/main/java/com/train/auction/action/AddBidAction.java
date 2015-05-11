@@ -1,11 +1,10 @@
 package com.train.auction.action;
 
-import java.util.*;
+import java.math.BigInteger;
+import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.train.auction.action.base.BaseAction;
-import com.train.auction.exception.AuctionException;
-import com.train.auction.service.AuctionManager;
 
 
 public class AddBidAction extends BaseAction
@@ -30,13 +29,13 @@ public class AddBidAction extends BaseAction
 	{
 		Map session = ActionContext.getContext().getSession();
 			//取出Session中的userId和刚刚生成的随机验证码
-		Integer userId = (Integer)session.get("userId");
+		BigInteger userId = (BigInteger)session.get("userId");
 		String ver2 = (String)session.get("rand");
 		session.put("rand" , null);
 		//如果用户输入的验证码和Session中的随机验证码相同
 		if (vercode.equalsIgnoreCase(ver2))
 		{
-			mgr.addBid(itemId , bidPrice ,userId);  
+			mgr.addBid(new BigInteger(String.valueOf(itemId)) , bidPrice ,userId);  
 			return SUCCESS;
 		}
 		else

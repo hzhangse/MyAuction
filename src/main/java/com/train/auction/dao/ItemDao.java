@@ -1,19 +1,19 @@
 package com.train.auction.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
-import com.train.auction.business.*;
-import com.train.auction.model.*;
+import com.train.auction.model.Item;
 
 
-public interface ItemDao  
+public interface ItemDao  extends IDao<Item>
 {
 	/**
 	 * 根据主键查找物品
 	 * @param itemId 想查找到物品的id;
 	 * @return id对应的物品
 	 */
-	Item get(Integer itemId);
+	Item get(BigInteger itemId);
 
 	/**
 	 * 保存物品
@@ -31,7 +31,7 @@ public interface ItemDao
 	 * 删除物品
 	 * @param id 需要删除的物品id
 	 */
-	void delete(Integer id);
+	void delete(BigInteger id);
 
 	/**
 	 * 删除物品
@@ -44,26 +44,26 @@ public interface ItemDao
 	 * @param kindId 种类id;
 	 * @return 该类的全部产品
 	 */
-	List<Item> findItemByKind(Integer kindId);
+	List<Item> findItemByKind(BigInteger kindId);
 
 	/**
 	 * 根据所有者查找处于拍卖中的物品
 	 * @param useId 所有者Id;
 	 * @return 指定用户处于拍卖中的全部物品
 	 */
-	List<Item> findItemByOwner(Integer userId);
+	List<Item> findItemByOwner(BigInteger userId);
 
 	/**
 	 * 根据赢取者查找物品
 	 * @param userId 赢取者Id;
 	 * @return 指定用户赢取的全部物品
 	 */
-	List<Item> findItemByWiner(Integer userId);
+	List<Item> findItemByWiner(BigInteger userId);
 
 	/**
 	 * 根据物品状态查找物品
 	 * @param stateId 状态Id;
 	 * @return 该状态下的全部物品
 	 */
-	List<Item> findItemByState(Integer stateId);
+	List<Item> findItemByState(BigInteger stateId);
 }

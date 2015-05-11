@@ -9,8 +9,10 @@
 	<!-- 指定Spring配置文件的位置 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name> 
-		<param-value>/WEB-INF/applicationContext.xml,
-			/WEB-INF/daoContext.xml</param-value>
+		<param-value>
+ 			classpath*:applicationContext.xml,
+ 			classpath*:mongoDaoContext.xml	
+		</param-value>
 	</context-param>
 
 	<!-- 配置Web应用启动时候加载Spring容器 -->

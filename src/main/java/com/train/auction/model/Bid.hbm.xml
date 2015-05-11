@@ -6,7 +6,7 @@
 <hibernate-mapping package="com.train.auction.model">
 	<class	name="Bid" table="bid" >
 		<!-- 映射标识属性 -->
-		<id	name="id" type="int" column="bid_id">
+		<id	name="id" type="big_integer" column="bid_id">
 			<!-- 指定主键生成策略 -->
 			<generator class="identity"/>
 		</id>

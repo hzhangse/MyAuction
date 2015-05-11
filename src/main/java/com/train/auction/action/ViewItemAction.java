@@ -1,12 +1,9 @@
 package com.train.auction.action;
 
-import java.util.*;
+import java.math.BigInteger;
+import java.util.List;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.train.auction.action.base.BaseAction;
-import com.train.auction.exception.AuctionException;
-import com.train.auction.model.*;
-import com.train.auction.service.AuctionManager;
 
 public class ViewItemAction extends BaseAction
 {
@@ -23,8 +20,8 @@ public class ViewItemAction extends BaseAction
 		}
 		else
 		{
-			setKind(mgr.getKind(kindId));
-			setItems(mgr.getItemsByKind(kindId));
+			setKind(mgr.getKind(new BigInteger(String.valueOf(kindId))));
+			setItems(mgr.getItemsByKind(new BigInteger(String.valueOf(kindId))));
 			return SUCCESS;
 		}
 	}

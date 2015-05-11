@@ -1,5 +1,6 @@
 package com.train.auction.action;
 
+import java.math.BigInteger;
 import java.util.*;
 
 import com.opensymphony.xwork2.*;
@@ -26,7 +27,7 @@ public class ViewDetailAction extends BaseActionInterface
 		}
 		else
 		{
-			setItem(mgr.getItem(itemId));
+			setItem(mgr.getItem(new BigInteger(String.valueOf(itemId))));
 			return SUCCESS;
 		}
 	}

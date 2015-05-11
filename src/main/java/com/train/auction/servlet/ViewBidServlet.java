@@ -1,15 +1,17 @@
 package com.train.auction.servlet;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import java.io.IOException;
+import java.math.BigInteger;
+import java.util.List;
 
-import java.io.*;
-import java.util.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import org.json.*;
+import org.json.JSONArray;
 
-import com.train.auction.business.*;
+import com.train.auction.business.BidBean;
 import com.train.auction.service.AuctionManager;
 import com.train.auction.servlet.base.BaseServlet;
 
@@ -22,12 +24,12 @@ public class ViewBidServlet extends BaseServlet
 		throws IOException , ServletException
 	{
 		// 获取userId
-		Integer userId = (Integer)request.getSession(true)
+		String userId = (String)request.getSession(true)
 			.getAttribute("userId");
 		// 获取业务逻辑组件
 		AuctionManager auctionManager = (AuctionManager)getCtx().getBean("mgr");
 		// 获取该用户所参与的全部竞价
-		List<BidBean> bids = auctionManager.getBidByUser(userId);
+		List<BidBean> bids = auctionManager.getBidByUser(new BigInteger(userId));
 		JSONArray jsonArr= new JSONArray(bids);
 		response.setContentType("text/html; charset=GBK");
 		response.getWriter().println(jsonArr.toString()); 			

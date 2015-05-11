@@ -11,7 +11,8 @@
 	http://www.springframework.org/schema/aop 
 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-	<!-- 定义数据源Bean，使用C3P0数据源实现 -->
+	
+  <!-- 定义数据源Bean，使用C3P0数据源实现 -->
 	<bean id="dataSource" destroy-method="close"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<!-- 指定连接数据库的驱动 -->
@@ -27,7 +28,7 @@
 		<property name="jdbcUrl"
 			value="jdbc:mysql://localhost:3306/auction"/>		
 		<property name="user" value="root"/>		
-		<property name="password" value=""/>
+		<property name="password" value="root"/>
 		
 		<!-- 指定连接数据库连接池的最大连接数 -->
 		<property name="maxPoolSize" value="40"/>
@@ -70,33 +71,9 @@
 			</props>
 		</property>
 	</bean>
-
-	<!-- 配置Hibernate的局部事务管理器，使用HibernateTransactionManager类 -->
-	<!-- 该类实现PlatformTransactionManager接口，是针对Hibernate的特定实现-->
-	<bean id="transactionManager" 
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-		<!-- 配置HibernateTransactionManager时需要依注入SessionFactory的引用 -->
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-
-	<!-- 配置事务切面Bean,指定事务管理器 -->
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<!-- 用于配置详细的事务语义 -->
-		<tx:attributes>
-			<!-- 所有以'get'开头的方法是read-only的 -->
-			<tx:method name="get*" read-only="true"/>
-			<!-- 其他方法使用默认的事务设置 -->
-			<tx:method name="*"/>
-		</tx:attributes>
-	</tx:advice>
-	<aop:config>
-		<!-- 配置一个切入点，匹配指定包下所有以Impl结尾的类执行的所有方法 -->
-		<aop:pointcut id="leeService"
-			expression="execution(* com.train.auction.service.impl.*Impl.*(..))"/>
-		<!-- 指定在leeService切入点应用txAdvice事务切面 -->
-		<aop:advisor advice-ref="txAdvice" 
-			pointcut-ref="leeService"/>
-	</aop:config>
+	
+	
+	
 
 	<!-- 定义JavaMailSenderImpl，它用于发送邮件 -->
 	<bean id="mailSender"

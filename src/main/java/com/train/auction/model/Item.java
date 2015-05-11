@@ -1,12 +1,17 @@
 package com.train.auction.model;
 
-import java.util.*;
+import java.math.BigInteger;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 
 public class Item
 {
 	//标识属性
-	private Integer id;
+	private BigInteger id;
 	//物品Remark
 	private String itemRemark;
 	//物品名称
@@ -22,14 +27,19 @@ public class Item
 	//物品的最高价
 	private double maxPrice;
 	//该物品的所有者
+	@DBRef
 	private AuctionUser owner;
 	//该物品所属的种类
+	@DBRef
 	private Kind kind;
-	//该物品的赢取者
+	//该物品的赢取者\
+	@DBRef
 	private AuctionUser winer;
 	//该物品所处的状态
+	@DBRef
 	private State itemState;
 	//该物品对应的全部竞价记录
+	@DBRef
 	private Set<Bid> bids = new HashSet<Bid>();
 
 	//无参数的构造器
@@ -37,7 +47,7 @@ public class Item
 	{
 	}
 	//初始化全部基本属性的构造器
-	public Item(Integer id , String itemRemark , String itemName , 
+	public Item(BigInteger id , String itemName ,String itemRemark ,  
 		String itemDesc , Date addtime , Date endtime , 
 		double initPrice , double maxPrice , AuctionUser owner)
 	{
@@ -53,11 +63,11 @@ public class Item
 	}
 
 	//id属性的setter和getter方法
-	public void setId(Integer id)
+	public void setId(BigInteger id)
 	{
 		this.id = id;
 	}
-	public Integer getId()
+	public BigInteger getId()
 	{
 		return this.id;
 	}

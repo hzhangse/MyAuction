@@ -1,11 +1,10 @@
 package com.train.auction.action;
 
-import java.util.*;
+import java.math.BigInteger;
+import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.train.auction.action.base.BaseAction;
-import com.train.auction.exception.AuctionException;
-import com.train.auction.service.AuctionManager;
 
 
 public class AddItemAction extends BaseAction
@@ -15,7 +14,7 @@ public class AddItemAction extends BaseAction
 	private String remark;
 	private double initPrice;
 	private int avail;
-	private int kind;
+	private BigInteger kind;
 	private String vercode;
 	//处理用户请求的execute方法
 	public String execute() throws Exception
@@ -24,7 +23,7 @@ public class AddItemAction extends BaseAction
 		String ver2 = (String)session.get("rand");
 		//强制系统刚生成的随机验证码失效
 		session.put("rand" , null);
-		Integer userId = (Integer)session.get("userId");
+		BigInteger userId = (BigInteger)session.get("userId");
 		//如果用户输入的验证码与系统随机产生的验证码相同
 		if (vercode.equalsIgnoreCase(ver2))
 		{
@@ -42,7 +41,7 @@ public class AddItemAction extends BaseAction
 					break;
 			}
 			//添加物品
-			mgr.addItem(name , desc , remark , initPrice ,avail , kind, userId);
+			mgr.addItem(name , desc , remark , initPrice ,avail , new BigInteger(String.valueOf(kind)), userId);
 			//将收集用户输入信息的表单域清空
 			return SUCCESS;
 		}
@@ -98,11 +97,11 @@ public class AddItemAction extends BaseAction
 		 return this.avail;
 	}
 
-	public void setKind(int kind)
+	public void setKind(BigInteger kind)
 	{
 		this.kind = kind;
 	}
-	public int getKind()
+	public BigInteger getKind()
 	{
 		 return this.kind;
 	}

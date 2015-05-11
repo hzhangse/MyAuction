@@ -1,18 +1,18 @@
 package com.train.auction.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
-import com.train.auction.business.*;
-import com.train.auction.model.*;
+import com.train.auction.model.AuctionUser;
 
 
-public interface AuctionUserDao  
+public interface AuctionUserDao  extends IDao<AuctionUser>
 {
 	/**
 	 * 根据id查找用户
 	 * @param id 需要查找的用户id
 	 */
-	AuctionUser get(Integer id);
+	AuctionUser get(BigInteger id);
 	
 	/**
 	 * 增加用户
@@ -30,7 +30,7 @@ public interface AuctionUserDao
 	 * 删除用户
 	 * @param id 需要删除的用户id
 	 */  
-	void delete(Integer id);
+	void delete(BigInteger id);
 
 	/**
 	 * 删除用户

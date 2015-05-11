@@ -1,12 +1,12 @@
 package com.train.auction.business;
 
-import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 
 
 public class ItemBean
 {
-	private Integer id;
+	private BigInteger id;
 	private String name;
 	private String desc;
 	private String remark;
@@ -24,7 +24,7 @@ public class ItemBean
 	{
 	}
 	//初始化全部属性的构造器
-	public ItemBean(Integer id , String name , String desc , String remark,
+	public ItemBean(BigInteger id , String name , String desc , String remark,
 		String kind , String owner , String winer , String state ,
 		double initPrice , double maxPrice , Date addTime , Date endTime)
 	{
@@ -43,11 +43,11 @@ public class ItemBean
 	}
 
 	//id属性的setter和getter方法
-	public void setId(Integer id)
+	public void setId(BigInteger id)
 	{
 		this.id = id;
 	}
-	public Integer getId()
+	public BigInteger getId()
 	{
 		return this.id;
 	}

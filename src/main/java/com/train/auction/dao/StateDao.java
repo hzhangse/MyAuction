@@ -1,17 +1,17 @@
 package com.train.auction.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
-import com.train.auction.business.*;
-import com.train.auction.model.*;
+import com.train.auction.model.State;
 
-public interface StateDao  
+public interface StateDao  extends IDao<State>
 {
 	/**
 	 * 根据id查找状态
 	 * @param id 需要查找的状态id
 	 */ 
-	State get(Integer id);
+	State get(BigInteger id);
 
 	/**
 	 * 增加状态
@@ -29,7 +29,7 @@ public interface StateDao
 	 * 删除状态
 	 * @param id 需要删除的状态id
 	 */ 
-	void delete(Integer id);
+	void delete(BigInteger id);
 
 	/**
 	 * 删除状态

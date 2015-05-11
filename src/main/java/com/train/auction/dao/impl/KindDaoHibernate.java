@@ -1,12 +1,13 @@
 package com.train.auction.dao.impl;
 
-import java.util.*;
+import java.math.BigInteger;
+import java.util.List;
 
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.train.auction.business.*;
-import com.train.auction.dao.*;
-import com.train.auction.model.*;
+import com.train.auction.dao.KindDao;
+import com.train.auction.model.Kind;
 
 
 public class KindDaoHibernate 
@@ -16,7 +17,7 @@ public class KindDaoHibernate
 	 * 根据id查找种类
 	 * @param id 需要查找的种类的id
 	 */
-	public Kind get(Integer id)
+	public Kind get(BigInteger id)
 	{
 		return (Kind)getHibernateTemplate().get(Kind.class , id);
 	}
@@ -43,7 +44,7 @@ public class KindDaoHibernate
 	 * 删除种类
 	 * @param id 需要删除的种类id
 	 */ 
-	public void delete(Integer id)
+	public void delete(BigInteger id)
 	{
 		getHibernateTemplate().delete(get(id));  
 	}
@@ -64,5 +65,15 @@ public class KindDaoHibernate
 	public List<Kind> findAll()
 	{
 		return (List<Kind>)getHibernateTemplate().find("from Kind");
+	}
+
+	public Query getQuery(Kind criteria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Kind findOne(Query query) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

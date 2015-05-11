@@ -1,9 +1,11 @@
 package com.train.auction.business;
 
+import java.math.BigInteger;
+
 
 public class KindBean
 {
-	private Integer id;
+	private BigInteger id;
 	private String kindName;
 	private String kindDesc;
 
@@ -12,7 +14,7 @@ public class KindBean
 	{
 	}
 	//初始化全部属性的构造器
-	public KindBean(Integer id , String kindName , String kindDesc)
+	public KindBean(BigInteger id , String kindName , String kindDesc)
 	{
 		this.id = id;
 		this.kindName = kindName;
@@ -20,11 +22,11 @@ public class KindBean
 	}
 
 	//id属性的setter和getter方法
-	public void setId(Integer id)
+	public void setId(BigInteger id)
 	{
 		this.id = id;
 	}
-	public Integer getId()
+	public BigInteger getId()
 	{
 		return this.id;
 	}

@@ -1,12 +1,14 @@
 package com.train.auction.dao.impl;
 
-import java.util.*;
+import java.math.BigInteger;
+import java.util.List;
 
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.train.auction.business.*;
-import com.train.auction.dao.*;
-import com.train.auction.model.*;
+import com.train.auction.dao.BidDao;
+import com.train.auction.model.AuctionUser;
+import com.train.auction.model.Bid;
 
 
 public class BidDaoHibernate 
@@ -17,7 +19,7 @@ public class BidDaoHibernate
 	 * @param bidId 竞价id;
 	 * @return id对应的竞价记录
 	 */
-	public Bid get(Integer bidId)
+	public Bid get(BigInteger bidId)
 	{
 		return(Bid)getHibernateTemplate().get(Bid.class , bidId);
 	}
@@ -44,7 +46,7 @@ public class BidDaoHibernate
 	 * 删除竞价记录
 	 * @param id 需要删除的竞价id
 	 */
-	public void delete(Integer id)
+	public void delete(BigInteger id)
 	{
 		getHibernateTemplate().delete(get(id));
 	}
@@ -64,7 +66,7 @@ public class BidDaoHibernate
 	 * @return 用户对应的全部
 	 * @return 用户对应的全部竞价
 	 */
-	public List<Bid> findByUser(Integer userId)
+	public List<Bid> findByUser(BigInteger userId)
 	{
 		return (List<Bid>)getHibernateTemplate()
 			.find("from Bid as bid where bid.bidUser.id = ?" , userId);
@@ -75,7 +77,7 @@ public class BidDaoHibernate
 	 * @param price 竞价的价格
 	 * @return 对指定物品、指定竞价对应的用户
 	 */
-	public AuctionUser findUserByItemAndPrice(Integer itemId , Double price)
+	public AuctionUser findUserByItemAndPrice(BigInteger itemId , Double price)
 	{
 		//执行HQL查询
 		List<Bid> l = (List<Bid>)getHibernateTemplate()
@@ -87,6 +89,21 @@ public class BidDaoHibernate
 			Bid b = (Bid)l.get(0);
 			return b.getBidUser();
 		}
+		return null;
+	}
+
+	public List<Bid> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Query getQuery(Bid criteria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Bid findOne(Query query) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

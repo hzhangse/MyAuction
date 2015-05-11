@@ -1,12 +1,12 @@
 package com.train.auction.servlet;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import java.io.IOException;
+import java.math.BigInteger;
 
-import java.io.*;
-
-import org.json.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.train.auction.service.AuctionManager;
 import com.train.auction.servlet.base.BaseServlet;
@@ -20,7 +20,7 @@ public class AddItemServlet extends BaseServlet
 		throws IOException , ServletException
 	{
 		// 获取userId
-		Integer userId = (Integer)request.getSession(true)
+    	BigInteger userId = (BigInteger)request.getSession(true)
 			.getAttribute("userId");
 		request.setCharacterEncoding("gbk");
 		// 解析请求参数
@@ -33,12 +33,12 @@ public class AddItemServlet extends BaseServlet
 		// 获取业务逻辑组件
 		AuctionManager auctionManager = (AuctionManager)getCtx().getBean("mgr");
 		// 调用业务逻辑组件的方法来添加物品
-		int itemId = auctionManager.addItem(itemName ,itemDesc , remark
+		BigInteger itemId = auctionManager.addItem(itemName ,itemDesc , remark
 			, Double.parseDouble(initPrice) , Integer.parseInt(avail) 
-			, Integer.parseInt(kindId) , userId);
+			, new BigInteger(kindId) , userId);
 		response.setContentType("text/html; charset=GBK");
 		// 添加成功
-		if (itemId > 0)
+		if (itemId.doubleValue()> 0)
 		{
 			response.getWriter().println("恭喜您，物品添加成功!");
 		}

@@ -1,11 +1,10 @@
 package com.train.auction.action;
 
+import java.math.BigInteger;
+import java.util.Map;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.train.auction.action.base.BaseAction;
-import com.train.auction.exception.AuctionException;
-import com.train.auction.service.AuctionManager;
-
-import java.util.*;
 
 public class LoginAction extends BaseAction
 {
@@ -22,8 +21,8 @@ public class LoginAction extends BaseAction
 		session.put("rand" , null);
 		if (vercode.equalsIgnoreCase(ver2))
 		{
-			Integer userId = mgr.validLogin(username,password);
-			if (userId != null && userId > 0)
+			BigInteger userId = mgr.validLogin(username,password);
+			if (userId != null && userId.doubleValue() > 0)
 			{
 				session.put("userId" , userId);
 				return SUCCESS;
