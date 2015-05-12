@@ -1,0 +1,20 @@
+>>>>>>>LOG4J<<<<<<< 0 2015-05-12 03:48:21,187 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 279248 2015-05-12 03:53:00,435 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 279254 2015-05-12 03:53:00,441 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-12 11:39:09,386 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 31 2015-05-12 11:39:09,417 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-12 13:09:23,348 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 15 2015-05-12 13:09:23,363 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - Query failed with error code 10057 and error message 'unauthorized db:auction ns:auction.auctionUser lock type:0 client:127.0.0.1' on server localhost:27017; nested exception is com.mongodb.MongoQueryException: Query failed with error code 10057 and error message 'unauthorized db:auction ns:auction.auctionUser lock type:0 client:127.0.0.1' on server localhost:27017
+>>>>>>>LOG4J<<<<<<< 1 2015-05-12 13:13:42,886 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 14 2015-05-12 13:13:42,899 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - Query failed with error code 10057 and error message 'unauthorized db:auction ns:auction.auctionUser lock type:0 client:127.0.0.1' on server localhost:27017; nested exception is com.mongodb.MongoQueryException: Query failed with error code 10057 and error message 'unauthorized db:auction ns:auction.auctionUser lock type:0 client:127.0.0.1' on server localhost:27017
+>>>>>>>LOG4J<<<<<<< 0 2015-05-12 13:25:46,212 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 13 2015-05-12 13:25:46,225 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - Query failed with error code 10057 and error message 'unauthorized db:auction ns:auction.auctionUser lock type:0 client:127.0.0.1' on server localhost:27017; nested exception is com.mongodb.MongoQueryException: Query failed with error code 10057 and error message 'unauthorized db:auction ns:auction.auctionUser lock type:0 client:127.0.0.1' on server localhost:27017
+>>>>>>>LOG4J<<<<<<< 0 2015-05-12 17:26:40,763 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 0 2015-05-12 17:28:02,776 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 6 2015-05-12 17:28:02,782 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-12 18:11:53,920 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 8 2015-05-12 18:11:53,928 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-12 18:12:17,315 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 5 2015-05-12 18:12:17,320 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-12 18:22:49,037 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 6 2015-05-12 18:22:49,043 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat

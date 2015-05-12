@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans 
@@ -10,24 +9,25 @@
 		http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/data/mongo
 		http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
-	
-	<mongo:mongo id="mongo"  host="mongo-1-2.jae.jd.com" port="27017"	/>
-	
-	<bean id="userCredentials" class="org.springframework.data.authentication.UserCredentials">
-		<constructor-arg name="username"  value="x0Wc3gMD"/>
-		<constructor-arg name="password"  value="78C8893709EI"/>
-	</bean>
-	
+
+	<mongo:mongo id="mongo" host="127.0.0.1" port="27017">
+
+	</mongo:mongo>
+
+
+	<mongo:db-factory id="mongoDbFactory" host="localhost"
+		port="27017" dbname="auction" username="auction" password="auction" />
+
+
+
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-		<constructor-arg ref="mongo" />
-		<constructor-arg value="81788090-26199299_mo_r63u055f" />
-		<constructor-arg ref="userCredentials" />
+		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
 	</bean>
-	
-	
- 	<context:component-scan base-package="com.train.auction.dao.impl.mongo">
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+
+	<context:component-scan base-package="com.train.auction.dao.impl.mongo">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-	
+
 
 </beans>

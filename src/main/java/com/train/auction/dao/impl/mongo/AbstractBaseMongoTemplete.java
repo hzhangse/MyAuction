@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
 import com.mongodb.DBObject;
+import com.mongodb.MongoCredential;
 import com.mongodb.util.JSON;
 import com.train.auction.dao.IDao;
 import com.train.auction.model.AuctionUser;
@@ -66,9 +67,11 @@ public abstract class AbstractBaseMongoTemplete<T> implements
 		this.mongoTemplate.dropCollection(this.getEntityClass());;
 	}
 	
-	public void dropDB() {
-		this.mongoTemplate.getDb().dropDatabase();
+	public void dropCollection() {	
+		this.mongoTemplate.dropCollection(this.getEntityClass());
 	}
+	
+	
 	public void delete(T o) {
 		this.mongoTemplate.remove(o,this.mongoTemplate.getCollectionName(this.getEntityClass()));
 	}

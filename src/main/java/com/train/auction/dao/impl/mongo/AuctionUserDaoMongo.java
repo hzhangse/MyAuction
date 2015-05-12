@@ -3,6 +3,7 @@ package com.train.auction.dao.impl.mongo;
 import java.math.BigInteger;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -11,18 +12,19 @@ import org.springframework.stereotype.Repository;
 
 import com.train.auction.dao.AuctionUserDao;
 import com.train.auction.model.AuctionUser;
+import com.train.auction.service.impl.AuctionManagerImpl;
 
 @SuppressWarnings("static-access")
 @Repository("auctionUserDao")
 public class AuctionUserDaoMongo extends AbstractBaseMongoTemplete<AuctionUser>
 		implements AuctionUserDao {
+	static Logger log = Logger.getLogger(AuctionUserDaoMongo.class.getName());
 
 	@Override
 	protected Class getEntityClass() {
 		return AuctionUser.class;
 	}
 
-	
 	public Query getQuery(AuctionUser criteriaUser) {
 		if (criteriaUser == null) {
 			criteriaUser = new AuctionUser();
@@ -56,7 +58,18 @@ public class AuctionUserDaoMongo extends AbstractBaseMongoTemplete<AuctionUser>
 			query = getQuery(criteriaUser);
 			query.skip(0);
 			query.limit(1);
-			return mongoTemplate.find(query, AuctionUser.class).get(0);
+			AuctionUser user = null;
+			
+			try {
+				log.error("start to valid user in mongodb");
+				user = mongoTemplate.find(query, AuctionUser.class).get(0);
+				if (user != null)
+					log.error("get valid user:" + user.getUsername());
+			} catch (Exception ex) {
+				log.error(ex.getLocalizedMessage());
+			}
+			return user;
+
 		} else
 			return null;
 

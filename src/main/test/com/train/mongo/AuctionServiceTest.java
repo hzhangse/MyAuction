@@ -267,6 +267,12 @@ public class AuctionServiceTest {
 		bidDao = (BidDaoMongo) app.getBean("bidDao");
 		itemDao = (ItemDaoMongo) app.getBean("itemDao");
 		stateDao = (StateDaoMongo) app.getBean("stateDao");
-		userDao.dropDB();
+		userDao.dropCollection();
+		kindDao.dropCollection();
+		bidDao.dropCollection();
+		itemDao.dropCollection();
+		stateDao.dropCollection();
+		
+		
 	}
 }
