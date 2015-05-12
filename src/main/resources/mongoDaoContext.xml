@@ -10,13 +10,13 @@
 		http://www.springframework.org/schema/data/mongo
 		http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 
-   
 
+	
+	<mongo:mongo id="mongo" replica-set="192.168.1.101:27017"/>
 
-	<mongo:db-factory id="mongoDbFactory" host="localhost"
-		port="27017" dbname="auction" username="auction" password="auction" />
-
-
+	<mongo:db-factory id="mongoDbFactory"  mongo-ref="mongo"
+	    dbname="auction" username="auction" password="auction" />
+	 
 
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />

@@ -162,7 +162,8 @@ public class AuctionManagerImpl implements AuctionManager
 			return BigInteger.valueOf(-1);
 		}
 		catch (Exception e)
-		{
+		{    e.printStackTrace();
+		
 			log.debug(e.getMessage());
 			throw new AuctionException("处理用户登录出现异常,请重试");
 		}

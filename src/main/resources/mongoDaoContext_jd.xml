@@ -10,15 +10,12 @@
 		http://www.springframework.org/schema/data/mongo
 		http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 
-    
-	<mongo:mongo id="mongo" replica-set="10.0.31.21:27017,10.0.31.20:27017">
 
-	</mongo:mongo>
+	<mongo:mongo id="mongo" replica-set="10.0.31.21:27017,10.0.31.20:27017" />
 
 
-	<mongo:db-factory id="mongoDbFactory" host="localhost"
-		port="27017" dbname="81788090-26199299_mo_r63u055f" username="x0Wc3gMD" password="78C8893709EI" />
-
+	<mongo:db-factory id="mongoDbFactory" mongo-ref="mongo"
+		dbname="81788090-26199299_mo_r63u055f" username="auction" password="auction" />
 
 
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
