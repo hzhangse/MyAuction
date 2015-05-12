@@ -7,13 +7,13 @@ import com.train.auction.action.base.BaseAction;
 
 public class ViewItemAction extends BaseAction
 {
-	private int kindId;
+	private BigInteger kindId;
 	private String kind;
 	private List items; 
 
 	public String execute()throws Exception
 	{
-		if (kindId <= 0)
+		if (kindId.doubleValue() <= 0)
 		{
 			addActionError("您必须选择有效的种类");
 			return ERROR;
@@ -26,11 +26,11 @@ public class ViewItemAction extends BaseAction
 		}
 	}
 
-	public void setKindId(int kindId)
+	public void setKindId(BigInteger kindId)
 	{
 		this.kindId = kindId;
 	}
-	public int getKindId()
+	public BigInteger getKindId()
 	{
 		 return this.kindId;
 	}

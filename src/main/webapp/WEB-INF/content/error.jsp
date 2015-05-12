@@ -26,10 +26,7 @@
 		</center>
 	</td>
 </tr>
-<tr>
-<td><div align="center" style="font:10pt">请您先核对输入，
-	如果再次出现该错误，请登录<a href="http://www.crazyit.org">疯狂Java联盟</a>提交错误信息</div><br></td>
-</tr>
+
 </table>
 </body>
 </html>

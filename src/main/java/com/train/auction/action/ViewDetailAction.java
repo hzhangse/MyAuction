@@ -13,14 +13,14 @@ import com.train.auction.service.AuctionManager;
 public class ViewDetailAction extends BaseActionInterface
 {
 	//封装用户请求参数的属性
-	private int itemId;
+	private BigInteger itemId;
 	private ItemBean item;
 	//封装系统错误提示的属性
 	private String errMsg;
 	//处理用户请求
 	public String execute()throws Exception
 	{
-		if (itemId <= 0)
+		if (itemId.doubleValue() <= 0)
 		{
 			setErrMsg("您选择物品ID不是一个有效的物品ID！");
 			return ERROR;
@@ -32,11 +32,11 @@ public class ViewDetailAction extends BaseActionInterface
 		}
 	}
 
-	public void setItemId(int itemId)
+	public void setItemId(BigInteger itemId)
 	{
 		this.itemId = itemId;
 	}
-	public int getItemId()
+	public BigInteger getItemId()
 	{
 		 return this.itemId;
 	}
