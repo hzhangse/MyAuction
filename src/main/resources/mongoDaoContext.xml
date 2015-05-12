@@ -10,9 +10,7 @@
 		http://www.springframework.org/schema/data/mongo
 		http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 
-	<mongo:mongo id="mongo" host="127.0.0.1" port="27017">
-
-	</mongo:mongo>
+   
 
 
 	<mongo:db-factory id="mongoDbFactory" host="localhost"

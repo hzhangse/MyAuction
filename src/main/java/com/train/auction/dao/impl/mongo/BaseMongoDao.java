@@ -73,9 +73,6 @@ public class BaseMongoDao {
 
 			// 获取users DBCollection；如果默认没有创建，mongodb会自动创建
 
-			MongoCredential credential = MongoCredential.createPlainCredential(
-					prop.getProperty("db.user"), dbName,
-					prop.getProperty("db.password").toCharArray());
 
 			// MongoClient mongoClient = new MongoClient(addr,
 			// Arrays.asList(credential));
