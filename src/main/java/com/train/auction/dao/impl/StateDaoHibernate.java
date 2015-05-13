@@ -73,4 +73,9 @@ public class StateDaoHibernate
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public void dropCollection() {
+		this.getHibernateTemplate().deleteAll(findAll());
+		
+	}
 }

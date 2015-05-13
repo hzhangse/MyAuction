@@ -113,4 +113,6 @@ public interface AuctionManager
 	 * 根据时间来修改物品的赢取者
 	 */
 	void updateWiner()throws AuctionException;
+	
+	void initData();
 }

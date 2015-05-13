@@ -120,4 +120,10 @@ public class ItemDaoHibernate
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void dropCollection() {
+		// TODO Auto-generated method stub
+		
+	}
 }

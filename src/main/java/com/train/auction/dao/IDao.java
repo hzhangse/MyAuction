@@ -22,4 +22,6 @@ public interface IDao<T> {
 	public Query getQuery(T criteria);
 	
 	public T findOne(Query query) ;
+
+	public void dropCollection();
 }

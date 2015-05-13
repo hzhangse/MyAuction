@@ -1,6 +1,5 @@
 package com.train.mongo;
 
-import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +12,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.mongodb.core.query.Query;
 
+import com.train.auction.dao.AuctionUserDao;
+import com.train.auction.dao.BidDao;
+import com.train.auction.dao.ItemDao;
+import com.train.auction.dao.KindDao;
+import com.train.auction.dao.StateDao;
 import com.train.auction.dao.impl.mongo.AuctionUserDaoMongo;
 import com.train.auction.dao.impl.mongo.BidDaoMongo;
 import com.train.auction.dao.impl.mongo.ItemDaoMongo;
@@ -25,15 +29,30 @@ import com.train.auction.model.Kind;
 import com.train.auction.model.State;
 import com.train.auction.service.AuctionManager;
 
-public class AuctionServiceTest {
+public class AuctionServiceTool {
 
 	private static ApplicationContext app;
 	private static AuctionManager service;
-	private static AuctionUserDaoMongo userDao;
-	private static KindDaoMongo kindDao;
-	private static BidDaoMongo bidDao;
-	private static ItemDaoMongo itemDao;
-	private static StateDaoMongo stateDao;
+	private static AuctionUserDao userDao;
+	private static KindDao kindDao;
+	private static BidDao bidDao;
+	private static ItemDao itemDao;
+	private static StateDao stateDao;
+
+	
+	public AuctionServiceTool(){
+		
+	}
+	
+//	public AuctionServiceTool(AuctionUserDao userDao,
+//			KindDao kindDao, BidDao bidDao, ItemDao itemDao,
+//			StateDao stateDao) {
+//		this.userDao = userDao;
+//		this.kindDao = kindDao;
+//		this.bidDao = bidDao;
+//		this.itemDao = itemDao;
+//		this.stateDao = stateDao;
+//	}
 
 	public void saveUser() {
 		AuctionUser user = new AuctionUser();
@@ -53,12 +72,12 @@ public class AuctionServiceTest {
 
 	public void saveKind() {
 		Kind k1 = new Kind();
-		//k1.setId(new BigInteger("1"));
+		// k1.setId(new BigInteger("1"));
 		k1.setKindName("电脑硬件");
 		k1.setKindDesc("这里并不是很主流的产品，但价格绝对令你心动");
 
 		Kind k2 = new Kind();
-		//k1.setId(new BigInteger("2"));
+		// k1.setId(new BigInteger("2"));
 		k2.setKindName("房产");
 		k2.setKindDesc("提供非常稀缺的房源");
 		kindDao.save(k1);
@@ -68,15 +87,15 @@ public class AuctionServiceTest {
 
 	public void saveState() {
 		State s1 = new State();
-	//	s1.setId(new BigInteger("1"));
+		// s1.setId(new BigInteger("1"));
 		s1.setStateName("拍卖中");
 		stateDao.save(s1);
 		s1 = new State();
-	//	s1.setId(new BigInteger("2"));
+		// s1.setId(new BigInteger("2"));
 		s1.setStateName("拍卖成功");
 		stateDao.save(s1);
 		s1 = new State();
-	//	s1.setId(new BigInteger("3"));
+		// s1.setId(new BigInteger("3"));
 		s1.setStateName("流拍");
 		stateDao.save(s1);
 	}
@@ -98,17 +117,15 @@ public class AuctionServiceTest {
 		saveBid("tomcat", 25000, cal.getTime(), item);
 
 	}
-	
+
 	public void saveBid3(Item item) {
 
 		Calendar cal = Calendar.getInstance();
 		cal.setTimeInMillis(new Date().getTime());
 		cal.add(Calendar.DAY_OF_YEAR, -1);
 		saveBid("mysql", 20000, cal.getTime(), item);
-		
 
 	}
-
 
 	public void saveBid(String user, double price, Date time, Item item) {
 		Bid bid = new Bid();
@@ -118,8 +135,7 @@ public class AuctionServiceTest {
 		item.getBids().add(bid);
 		bid.setBidDate(time);
 		this.bidDao.save(bid);
-		
-		
+
 	}
 
 	private State getState(String name) {
@@ -149,10 +165,10 @@ public class AuctionServiceTest {
 		calend.setTimeInMillis(new Date().getTime());
 		calend.add(Calendar.DAY_OF_YEAR, 30);
 
-		Item item = saveItem("主板", "老式主板", "老主板，还可以用", caladd.getTime(), calend.getTime(),
-				230, 250, this.getKind("电脑硬件"), getState("拍卖中"),
-				this.getUser("tomcat"), null);
-		
+		Item item = saveItem("主板", "老式主板", "老主板，还可以用", caladd.getTime(),
+				calend.getTime(), 230, 250, this.getKind("电脑硬件"),
+				getState("拍卖中"), this.getUser("tomcat"), null);
+
 		this.saveBid1(item);
 
 		caladd.setTimeInMillis(new Date().getTime());
@@ -168,21 +184,23 @@ public class AuctionServiceTest {
 		calend.setTimeInMillis(new Date().getTime());
 		calend.add(Calendar.DAY_OF_YEAR, -1);
 
-		Item item3 = saveItem("老房子", "40年的老房子", "40年的老房子，还可以用", caladd.getTime(),
-				calend.getTime(), 21000, 25000, getKind("房产"),
-				getState("拍卖成功"), this.getUser("mysql"), this.getUser("tomcat"));
-		
+		Item item3 = saveItem("老房子", "40年的老房子", "40年的老房子，还可以用",
+				caladd.getTime(), calend.getTime(), 21000, 25000,
+				getKind("房产"), getState("拍卖成功"), this.getUser("mysql"),
+				this.getUser("tomcat"));
+
 		this.saveBid2(item3);
 		this.saveBid3(item3);
-		
-		Item item1 = this.itemDao.findById(item.getId());
-		
-		AuctionUser user1 = this.bidDao.findUserByItemAndPrice(item3.getId(),new Double(25000) );
-		
-		
-		Assert.assertTrue(item1!=null);
-		Assert.assertTrue(this.bidDao.findByUser(this.getUser("tomcat").getId())!=null);
-		Assert.assertTrue( user1!=null);
+
+		Item item1 = this.itemDao.get(item.getId());
+
+		AuctionUser user1 = this.bidDao.findUserByItemAndPrice(item3.getId(),
+				new Double(25000));
+
+		Assert.assertTrue(item1 != null);
+		Assert.assertTrue(this.bidDao
+				.findByUser(this.getUser("tomcat").getId()) != null);
+		Assert.assertTrue(user1 != null);
 	}
 
 	public Item saveItem(String name, String remark, String desc, Date addtime,
@@ -207,54 +225,66 @@ public class AuctionServiceTest {
 		return item;
 	}
 
+	
 	@Test
 	public void initData() {
-		
+		userDao.dropCollection();
+		kindDao.dropCollection();
+		bidDao.dropCollection();
+		itemDao.dropCollection();
+		stateDao.dropCollection();
 		this.saveUser();
 		this.saveKind();
 		this.saveState();
 		this.saveItems();
-		
+
 	}
-	
+
 	@Test
-	public void testBidDao(){
+	public void testBidDao() {
 		this.getUser("tomcat");
 		this.bidDao.findByUser(this.getUser("tomcat").getId());
-		
+
 	}
-	
+
 	@Test
-	public void testItemDao(){
+	public void testItemDao() {
 		List<Item> result = null;
-		Assert.assertTrue(this.itemDao.findItemByKind(this.getKind("房产").getId())!=null);
+		Assert.assertTrue(this.itemDao.findItemByKind(this.getKind("房产")
+				.getId()) != null);
 		result = this.itemDao.findItemByKind(this.getKind("房产").getId());
-		for (Item item:result)
-			System.out.println(item.getItemName()+"_"+item.getKind().getKindName());
-		
+		for (Item item : result)
+			System.out.println(item.getItemName() + "_"
+					+ item.getKind().getKindName());
+
 		result = itemDao.findItemByOwner(this.getUser("mysql").getId());
-		for (Item item:result)
-			System.out.println(item.getItemName()+"_"+item.getOwner().getUsername());
-		
-		Assert.assertTrue(this.itemDao.findItemByState(this.getState("拍卖成功").getId())!=null);
+		for (Item item : result)
+			System.out.println(item.getItemName() + "_"
+					+ item.getOwner().getUsername());
+
+		Assert.assertTrue(this.itemDao.findItemByState(this.getState("拍卖成功")
+				.getId()) != null);
 		result = this.itemDao.findItemByState(this.getState("拍卖成功").getId());
-		for (Item item:result)
-			System.out.println(item.getItemName()+"_"+item.getItemState().getStateName());
-		
-		Assert.assertTrue(this.itemDao.findItemByWiner(this.getUser("tomcat").getId())!=null);
-	
+		for (Item item : result)
+			System.out.println(item.getItemName() + "_"
+					+ item.getItemState().getStateName());
+
+		Assert.assertTrue(this.itemDao.findItemByWiner(this.getUser("tomcat")
+				.getId()) != null);
+
 		result = this.itemDao.findItemByWiner(this.getUser("tomcat").getId());
-		for (Item item:result)
-			System.out.println(item.getItemName()+"_"+item.getWiner().getUsername());
+		for (Item item : result)
+			System.out.println(item.getItemName() + "_"
+					+ item.getWiner().getUsername());
 	}
 
-
 	@Test
-	public void testUserDao(){
-		AuctionUser user =this.userDao.findUserByNameAndPass("tomcat", "tomcat");
+	public void testUserDao() {
+		AuctionUser user = this.userDao.findUserByNameAndPass("tomcat",
+				"tomcat");
 		Assert.assertTrue(user.getUserpass().equalsIgnoreCase("tomcat"));
 	}
-	
+
 	
 	@BeforeClass
 	public static void initSpring() {
@@ -267,12 +297,62 @@ public class AuctionServiceTest {
 		bidDao = (BidDaoMongo) app.getBean("bidDao");
 		itemDao = (ItemDaoMongo) app.getBean("itemDao");
 		stateDao = (StateDaoMongo) app.getBean("stateDao");
-		userDao.dropCollection();
-		kindDao.dropCollection();
-		bidDao.dropCollection();
-		itemDao.dropCollection();
-		stateDao.dropCollection();
-		
-		
+
+	}
+
+	public static ApplicationContext getApp() {
+		return app;
+	}
+
+	public static void setApp(ApplicationContext app) {
+		AuctionServiceTool.app = app;
+	}
+
+	public static AuctionManager getService() {
+		return service;
+	}
+
+	public static void setService(AuctionManager service) {
+		AuctionServiceTool.service = service;
+	}
+
+	public static AuctionUserDao getUserDao() {
+		return userDao;
+	}
+
+	public static void setUserDao(AuctionUserDao userDao) {
+		AuctionServiceTool.userDao = userDao;
+	}
+
+	public static KindDao getKindDao() {
+		return kindDao;
+	}
+
+	public static void setKindDao(KindDao kindDao) {
+		AuctionServiceTool.kindDao = kindDao;
+	}
+
+	public static BidDao getBidDao() {
+		return bidDao;
+	}
+
+	public static void setBidDao(BidDao bidDao) {
+		AuctionServiceTool.bidDao = bidDao;
+	}
+
+	public static ItemDao getItemDao() {
+		return itemDao;
+	}
+
+	public static void setItemDao(ItemDao itemDao) {
+		AuctionServiceTool.itemDao = itemDao;
+	}
+
+	public static StateDao getStateDao() {
+		return stateDao;
+	}
+
+	public static void setStateDao(StateDao stateDao) {
+		AuctionServiceTool.stateDao = stateDao;
 	}
 }

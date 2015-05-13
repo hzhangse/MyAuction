@@ -19,7 +19,11 @@ import com.train.auction.dao.BidDao;
 import com.train.auction.dao.ItemDao;
 import com.train.auction.dao.KindDao;
 import com.train.auction.dao.StateDao;
-
+import com.train.auction.dao.impl.mongo.AuctionUserDaoMongo;
+import com.train.auction.dao.impl.mongo.BidDaoMongo;
+import com.train.auction.dao.impl.mongo.ItemDaoMongo;
+import com.train.auction.dao.impl.mongo.KindDaoMongo;
+import com.train.auction.dao.impl.mongo.StateDaoMongo;
 import com.train.auction.exception.AuctionException;
 import com.train.auction.model.AuctionUser;
 import com.train.auction.model.Bid;
@@ -27,6 +31,7 @@ import com.train.auction.model.Item;
 import com.train.auction.model.Kind;
 import com.train.auction.model.State;
 import com.train.auction.service.AuctionManager;
+import com.train.mongo.AuctionServiceTool;
 
 
 public class AuctionManagerImpl implements AuctionManager
@@ -515,5 +520,18 @@ public class AuctionManagerImpl implements AuctionManager
 			ib.setState(item.getItemState().getStateName());
 		ib.setInitPrice(item.getInitPrice());
 		ib.setMaxPrice(item.getMaxPrice());
+	}
+	
+	public void initData(){
+		AuctionServiceTool tool = new AuctionServiceTool() ;
+		tool.setBidDao(bidDao);
+		tool.setItemDao(itemDao);
+		
+		tool.setKindDao(kindDao);
+		tool.setService(this);
+		tool.setStateDao(stateDao);
+		tool.setUserDao(userDao);
+		tool.initData();
+		
 	}
 }

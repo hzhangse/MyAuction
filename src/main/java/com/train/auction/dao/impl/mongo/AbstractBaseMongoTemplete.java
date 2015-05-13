@@ -44,6 +44,15 @@ public abstract class AbstractBaseMongoTemplete<T> implements
 		setMongoTemplate(mongoTemplate);
 	}
 
+	/**
+	 * 通过ID获取记录,并且指定了集合名(表的意思)
+	 * 
+	 * @param id
+	 * @param collectionName
+	 *            集合名
+	 * @return
+	 */
+
 	public T get(BigInteger id) {
 		return mongoTemplate.findById(id, this.getEntityClass());
 
@@ -63,9 +72,7 @@ public abstract class AbstractBaseMongoTemplete<T> implements
 		this.mongoTemplate.save(o);
 
 	}
-	public void deleteCollection() {
-		this.mongoTemplate.dropCollection(this.getEntityClass());;
-	}
+	
 	
 	public void dropCollection() {	
 		this.mongoTemplate.dropCollection(this.getEntityClass());
@@ -166,18 +173,7 @@ public abstract class AbstractBaseMongoTemplete<T> implements
 		return mongoTemplate.findById(id, this.getEntityClass());
 	}
 
-	/**
-	 * 通过ID获取记录,并且指定了集合名(表的意思)
-	 * 
-	 * @param id
-	 * @param collectionName
-	 *            集合名
-	 * @return
-	 */
-	public T findById(String id, String collectionName) {
-		return mongoTemplate
-				.findById(id, this.getEntityClass(), collectionName);
-	}
+	
 
 	/**
 	 * 获取需要操作的实体类class
