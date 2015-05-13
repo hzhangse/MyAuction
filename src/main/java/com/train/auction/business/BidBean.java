@@ -1,12 +1,13 @@
 package com.train.auction.business;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 
 
 public class BidBean implements Serializable
 {
-	private Integer id;
+	private BigInteger id;
 	private String user;
 	private String item;
 	private double price;
@@ -18,7 +19,7 @@ public class BidBean implements Serializable
 	{
 	}
 	//初始化全部属性的构造器
-	public BidBean(Integer id , String user , String item ,
+	public BidBean(BigInteger id , String user , String item ,
 		double price , Date bidDate)
 	{
 		this.id = id;
@@ -29,11 +30,11 @@ public class BidBean implements Serializable
 	}
 
 	//id属性的setter和getter方法
-	public void setId(Integer id)
+	public void setId(BigInteger id)
 	{
 		this.id = id;
 	}
-	public Integer getId()
+	public BigInteger getId()
 	{
 		return this.id;
 	}

@@ -483,7 +483,7 @@ public class AuctionManagerImpl implements AuctionManager
 	 */
 	private void initBid(BidBean bb , Bid bid)
 	{
-		bb.setId(bid.getId().intValue());
+		bb.setId(bid.getId());
 		if (bid.getBidUser() != null )
 			bb.setUser(bid.getBidUser().getUsername());
 		if (bid.getBidItem() != null )

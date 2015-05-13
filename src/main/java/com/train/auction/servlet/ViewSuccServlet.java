@@ -24,14 +24,15 @@ public class ViewSuccServlet extends BaseServlet
 		throws IOException , ServletException
 	{
 		// 获取userId
-		String userId = (String)request.getSession(true)
+		BigInteger userId = (BigInteger)request.getSession(true)
 			.getAttribute("userId");
 		// 获取业务逻辑组件
 		AuctionManager auctionManager = (AuctionManager)getCtx().getBean("mgr");
 		// 获取该用户所有竞得的物品
-		List<ItemBean> items = auctionManager.getItemByWiner(new BigInteger(userId));
+		List<ItemBean> items = auctionManager.getItemByWiner(userId);
 		JSONArray jsonArr= new JSONArray(items);
 		response.setContentType("text/html; charset=GBK");
+		jsonArr.toString();
 		response.getWriter().println(jsonArr.toString());
 	}
 }

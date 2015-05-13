@@ -1,10 +1,17 @@
 package com.train.auction.servlet;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import java.io.IOException;
+import java.math.BigInteger;
 
-import java.io.*;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 
 @WebFilter(urlPatterns="/android/*")
@@ -22,9 +29,9 @@ public class Authority implements Filter
 		HttpServletRequest hrequest = (HttpServletRequest)request;
 		// 获取HttpSession对象
 		HttpSession session = hrequest.getSession(true);
-		Integer userId = (Integer)session.getAttribute("userId");
+		BigInteger userId = (BigInteger)session.getAttribute("userId");
 		// 如果用户已经登录，或用户正在登录
-		if ((userId != null && userId > 0)
+		if ((userId != null && userId.doubleValue() > 0)
 			|| hrequest.getRequestURI().endsWith("/login.jsp"))
 		{
 			// “放行”请求

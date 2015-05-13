@@ -24,12 +24,12 @@ public class ViewBidServlet extends BaseServlet
 		throws IOException , ServletException
 	{
 		// 获取userId
-		String userId = (String)request.getSession(true)
+		BigInteger userId = (BigInteger)request.getSession(true)
 			.getAttribute("userId");
 		// 获取业务逻辑组件
 		AuctionManager auctionManager = (AuctionManager)getCtx().getBean("mgr");
 		// 获取该用户所参与的全部竞价
-		List<BidBean> bids = auctionManager.getBidByUser(new BigInteger(userId));
+		List<BidBean> bids = auctionManager.getBidByUser(userId);
 		JSONArray jsonArr= new JSONArray(bids);
 		response.setContentType("text/html; charset=GBK");
 		response.getWriter().println(jsonArr.toString()); 			

@@ -30,7 +30,7 @@ public class LoginServlet extends BaseServlet
 		BigInteger userId = auctionManager.validLogin(user , pass);
 		response.setContentType("text/html; charset=GBK");
 		// µÇÂ¼³É¹¦
-		if (userId.compareTo(new BigInteger("0"))>1)
+		if (userId.doubleValue()>0)
 		{
 			request.getSession(true).setAttribute("userId" , userId);
 		}

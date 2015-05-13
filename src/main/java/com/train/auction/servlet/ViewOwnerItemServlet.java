@@ -24,12 +24,12 @@ public class ViewOwnerItemServlet extends BaseServlet
 		throws IOException , ServletException
 	{
 		// 获取userId
-		String userId = (String)request.getSession(true)
+    	BigInteger userId = (BigInteger)request.getSession(true)
 			.getAttribute("userId");
 		// 获取业务逻辑组件
 		AuctionManager auctionManager = (AuctionManager)getCtx().getBean("mgr");
 		// 获取该用户当前处于拍卖中的所有物品
-		List<ItemBean> items = auctionManager.getItemsByOwner(new BigInteger(userId));
+		List<ItemBean> items = auctionManager.getItemsByOwner(userId);
 		// 将查询得到的物品封装成JSONArray对象
 		JSONArray jsonArr= new JSONArray(items);
 		response.setContentType("text/html; charset=GBK");

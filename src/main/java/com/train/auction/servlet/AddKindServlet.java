@@ -29,7 +29,7 @@ public class AddKindServlet extends BaseServlet
 		BigInteger kindId = auctionManager.addKind(name , desc);
 		response.setContentType("text/html; charset=GBK");
 		// 添加成功
-		if (kindId.compareTo(new BigInteger("0"))>1)
+		if (kindId.doubleValue()>0)
 		{
 			response.getWriter().println("恭喜您，种类添加成功!");
 		}
