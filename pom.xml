@@ -14,7 +14,7 @@
 			<artifactId>junit</artifactId>
 			<version>4.8.2</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
@@ -48,7 +48,7 @@
 			<version>3.2.9.RELEASE</version>
 		</dependency>
 		<dependency>
-		    
+
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
@@ -111,10 +111,10 @@
 			<version>1.5.0-b01</version>
 		</dependency>
 		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20090211</version>
-		</dependency>
+  <groupId>org.json</groupId>
+  <artifactId>json</artifactId>
+  <version>20131018</version>
+</dependency>
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>
 			<artifactId>json-lib</artifactId>
