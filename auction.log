@@ -44,3 +44,73 @@
 >>>>>>>LOG4J<<<<<<< 89 2015-05-12 23:21:55,251 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - Unable to connect to any servers; nested exception is com.mongodb.MongoServerSelectionException: Unable to connect to any servers
 >>>>>>>LOG4J<<<<<<< 0 2015-05-12 23:23:19,825 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
 >>>>>>>LOG4J<<<<<<< 105 2015-05-12 23:23:19,930 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-12 23:59:02,406 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 107 2015-05-12 23:59:02,513 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 00:01:03,136 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 147 2015-05-13 00:01:03,283 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 527262 2015-05-13 00:09:50,398 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 527269 2015-05-13 00:09:50,405 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 00:12:07,569 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 145 2015-05-13 00:12:07,714 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 35576 2015-05-13 00:12:43,145 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 35581 2015-05-13 00:12:43,150 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 00:15:59,721 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 162 2015-05-13 00:15:59,883 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 27906 2015-05-13 00:16:27,627 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 27912 2015-05-13 00:16:27,633 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 00:33:22,512 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 146 2015-05-13 00:33:22,658 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 81989 2015-05-13 00:34:44,501 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 81999 2015-05-13 00:34:44,511 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 1733412 2015-05-13 01:02:15,924 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 1733419 2015-05-13 01:02:15,931 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 2067276 2015-05-13 01:07:49,788 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 2067284 2015-05-13 01:07:49,796 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 2730959 2015-05-13 01:18:53,471 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 2730986 2015-05-13 01:18:53,498 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 2773144 2015-05-13 01:19:35,656 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 2773166 2015-05-13 01:19:35,678 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 1 2015-05-13 01:22:12,595 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 134 2015-05-13 01:22:12,728 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 01:26:40,512 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 138 2015-05-13 01:26:40,650 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 01:30:22,420 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 127 2015-05-13 01:30:22,547 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 10:46:12,968 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 165 2015-05-13 10:46:13,133 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 10:54:58,714 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 139 2015-05-13 10:54:58,853 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 1181602 2015-05-13 11:14:40,316 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 1181610 2015-05-13 11:14:40,324 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 1939572 2015-05-13 11:27:18,286 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 1939628 2015-05-13 11:27:18,342 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 2046082 2015-05-13 11:29:04,796 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 2046091 2015-05-13 11:29:04,805 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 2201587 2015-05-13 11:31:40,301 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 2201594 2015-05-13 11:31:40,308 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 4518500 2015-05-13 12:10:17,214 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 4518506 2015-05-13 12:10:17,220 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 12:30:18,274 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 256 2015-05-13 12:30:18,530 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 13:05:43,501 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 125 2015-05-13 13:05:43,626 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 1089495 2015-05-13 13:23:52,996 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 1089503 2015-05-13 13:23:53,004 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 2230903 2015-05-13 13:42:54,404 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 2230909 2015-05-13 13:42:54,410 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 3899879 2015-05-13 14:10:43,380 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 3899883 2015-05-13 14:10:43,384 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 4634040 2015-05-13 14:22:57,541 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 4634047 2015-05-13 14:22:57,548 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 14:30:38,246 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 8 2015-05-13 14:30:38,254 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 15:05:19,231 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 7 2015-05-13 15:05:19,238 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 15:17:22,436 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 324 2015-05-13 15:17:22,760 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 42577 2015-05-13 15:18:05,013 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 42586 2015-05-13 15:18:05,022 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 15:38:22,999 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 8 2015-05-13 15:38:23,007 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:tomcat
+>>>>>>>LOG4J<<<<<<< 0 2015-05-13 19:57:40,675 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 32 2015-05-13 19:57:40,707 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:Ttggg

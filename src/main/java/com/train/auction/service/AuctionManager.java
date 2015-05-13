@@ -7,6 +7,7 @@ import com.train.auction.business.BidBean;
 import com.train.auction.business.ItemBean;
 import com.train.auction.business.KindBean;
 import com.train.auction.exception.AuctionException;
+import com.train.auction.service.impl.ExecuteResult;
 
 
 public interface AuctionManager  
@@ -34,6 +35,9 @@ public interface AuctionManager
 	BigInteger validLogin(String username , String pass)
 		throws AuctionException;
 
+	
+	ExecuteResult registUser(String username , String pass,String email)
+			throws AuctionException;
 	/**
 	 * 查询用户的全部出价
 	 * @param userId 竞价用户的ID

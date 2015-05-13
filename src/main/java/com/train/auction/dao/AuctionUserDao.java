@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 import com.train.auction.model.AuctionUser;
+import com.train.auction.service.impl.ExecuteResult;
 
 
 public interface AuctionUserDao  extends IDao<AuctionUser>
@@ -51,4 +52,6 @@ public interface AuctionUserDao  extends IDao<AuctionUser>
 	 * @return 指定用户名、密码对应的用户
 	 */
 	AuctionUser findUserByNameAndPass(String username , String pass);
+	
+	ExecuteResult registUser(String username,String pass,String email);
 }

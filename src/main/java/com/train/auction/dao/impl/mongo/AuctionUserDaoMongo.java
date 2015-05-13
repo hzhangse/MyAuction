@@ -1,18 +1,14 @@
 package com.train.auction.dao.impl.mongo;
 
-import java.math.BigInteger;
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import com.train.auction.dao.AuctionUserDao;
 import com.train.auction.model.AuctionUser;
-import com.train.auction.service.impl.AuctionManagerImpl;
+import com.train.auction.service.impl.ExecuteResult;
 
 @SuppressWarnings("static-access")
 @Repository("auctionUserDao")
@@ -47,6 +43,12 @@ public class AuctionUserDaoMongo extends AbstractBaseMongoTemplete<AuctionUser>
 					"^" + criteriaUser.getUserpass());
 			query.addCriteria(criteria);
 		}
+
+		if (criteriaUser.getEmail() != null) {
+			Criteria criteria = Criteria.where("email").regex(
+					"^" + criteriaUser.getEmail());
+			query.addCriteria(criteria);
+		}
 		return query;
 	}
 
@@ -59,7 +61,7 @@ public class AuctionUserDaoMongo extends AbstractBaseMongoTemplete<AuctionUser>
 			query.skip(0);
 			query.limit(1);
 			AuctionUser user = null;
-			
+
 			try {
 				log.error("start to valid user in mongodb");
 				user = mongoTemplate.find(query, AuctionUser.class).get(0);
@@ -73,6 +75,36 @@ public class AuctionUserDaoMongo extends AbstractBaseMongoTemplete<AuctionUser>
 		} else
 			return null;
 
+	}
+
+	@Override
+	public ExecuteResult registUser(String username, String pass, String email) {
+		AuctionUser criteriaUser = new AuctionUser();
+		criteriaUser.setEmail(email);
+		Query q = this.getQuery(criteriaUser);
+		AuctionUser result = this.findOne(q);
+		if (result != null) {
+			return ExecuteResult.createFailedResult("该email已经用于注册！");
+		}
+
+		criteriaUser.setUsername(username);
+		q = this.getQuery(criteriaUser);
+
+		result = this.findOne(q);
+		if (result != null) {
+			return ExecuteResult.createFailedResult("该用户名已经用于注册！");
+		}
+
+		criteriaUser.setUserpass(pass);
+		try {
+			this.save(criteriaUser);
+		
+			return ExecuteResult.createSuccdResult("用户:"+username+"注册成功");
+		} catch (Exception e) {
+			
+			return ExecuteResult.createFailedResult("用户注册失败，请联系管理员");
+		}
+		
 	}
 
 }

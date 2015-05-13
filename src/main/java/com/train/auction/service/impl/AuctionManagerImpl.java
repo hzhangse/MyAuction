@@ -19,11 +19,6 @@ import com.train.auction.dao.BidDao;
 import com.train.auction.dao.ItemDao;
 import com.train.auction.dao.KindDao;
 import com.train.auction.dao.StateDao;
-import com.train.auction.dao.impl.mongo.AuctionUserDaoMongo;
-import com.train.auction.dao.impl.mongo.BidDaoMongo;
-import com.train.auction.dao.impl.mongo.ItemDaoMongo;
-import com.train.auction.dao.impl.mongo.KindDaoMongo;
-import com.train.auction.dao.impl.mongo.StateDaoMongo;
 import com.train.auction.exception.AuctionException;
 import com.train.auction.model.AuctionUser;
 import com.train.auction.model.Bid;
@@ -172,6 +167,14 @@ public class AuctionManagerImpl implements AuctionManager
 			log.debug(e.getMessage());
 			throw new AuctionException("处理用户登录出现异常,请重试");
 		}
+	}
+	
+	
+	@Override
+	public ExecuteResult registUser(String username, String pass, String email)
+			throws AuctionException {
+		return userDao.registUser(username, pass, email);
+		
 	}
 
 	/**
@@ -534,4 +537,5 @@ public class AuctionManagerImpl implements AuctionManager
 		tool.initData();
 		
 	}
+	
 }

@@ -111,10 +111,10 @@
 			<version>1.5.0-b01</version>
 		</dependency>
 		<dependency>
-  <groupId>org.json</groupId>
-  <artifactId>json</artifactId>
-  <version>20131018</version>
-</dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20131018</version>
+		</dependency>
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>
 			<artifactId>json-lib</artifactId>

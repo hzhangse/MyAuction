@@ -32,7 +32,7 @@ public class Authority implements Filter
 		BigInteger userId = (BigInteger)session.getAttribute("userId");
 		// 如果用户已经登录，或用户正在登录
 		if ((userId != null && userId.doubleValue() > 0)
-			|| hrequest.getRequestURI().endsWith("/login.jsp"))
+			|| hrequest.getRequestURI().endsWith("/login.jsp")|| hrequest.getRequestURI().endsWith("/regist.jsp"))
 		{
 			// “放行”请求
 			chain.doFilter(request , response);
