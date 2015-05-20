@@ -29,13 +29,13 @@
 			</props>
 		</property>
 		<!-- 指定登录邮箱的用户名、密码 -->
-		<property name="username" value="spring_test"/>
-		<property name="password" value="123abc"/>
+		<property name="username" value="auction_rainbow954@163.com"/>
+		<property name="password" value="rainbow954"/>
 	</bean>
 	<!-- 定义SimpleMailMessage Bean，它代表了一份邮件 -->
 	<bean id="mailMessage"
 		class="org.springframework.mail.SimpleMailMessage">
-		<property name="from" value="spring_test@163.com"/>
+		<property name="from" value="auction_rainbow954@163.com"/>
 		<!-- 指定邮件标题 -->
 		<property name="subject" value="竞价通知"/>
 	</bean>
@@ -71,7 +71,7 @@
 	<bean id="myTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
 		<property name="jobDetail" ref="myJob" />
 		<property name="startDelay" value="0" />
-		<property name="repeatInterval" value="86400000" />
+		<property name="repeatInterval" value="16400000" />
 	</bean>
 	
 	<bean id="myJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">

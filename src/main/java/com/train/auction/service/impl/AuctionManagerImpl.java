@@ -467,6 +467,13 @@ public class AuctionManagerImpl implements AuctionManager
 						//修改物品的状态成为“被赢取”
 						item.setItemState(stateDao.get(BigInteger.valueOf(2)));
 						itemDao.save(item);
+						SimpleMailMessage msg = new SimpleMailMessage(this.message);
+						msg.setTo(au.getEmail());
+						msg.setText("Dear "
+							+ au.getUsername()
+							+ ", 谢谢你参与竞价，你已拍中的物品的是: "
+							+ item.getItemName() );
+						mailSender.send(msg);
 					}
 					else
 					{
