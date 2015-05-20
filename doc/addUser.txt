@@ -1,0 +1,16 @@
+use admin
+db.createUser(
+{
+  user:"root",
+  pwd:"123",
+  roles:[{role:"dbAdmin",db:"admin"},{role:"readWrite",db:"admin"}]
+}
+)
+use aucton
+db.createUser(
+{
+  user:"auction",
+  pwd:"auction",
+  roles:[{role:"readWrte",db:"auction"}]
+}
+)
