@@ -64,7 +64,7 @@ public class AuctionServiceTool {
 		
 		user = new AuctionUser();
 		user.setUsername("angela");
-		user.setEmail("2387362072@qq.com");
+		user.setEmail("1311054093@qq.com");
 		user.setUserpass("rainbow");
 		userDao.save(user);
 		

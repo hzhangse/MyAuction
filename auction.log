@@ -122,3 +122,21 @@
 >>>>>>>LOG4J<<<<<<< 13 2015-05-20 18:03:30,180 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:rainbow954
 >>>>>>>LOG4J<<<<<<< 0 2015-05-20 18:05:22,983 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
 >>>>>>>LOG4J<<<<<<< 8 2015-05-20 18:05:22,991 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:rainbow954
+>>>>>>>LOG4J<<<<<<< 0 2015-05-20 18:55:44,273 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 13 2015-05-20 18:55:44,286 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:rainbow954
+>>>>>>>LOG4J<<<<<<< 0 2015-05-20 19:04:21,226 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 7 2015-05-20 19:04:21,233 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:rainbow954
+>>>>>>>LOG4J<<<<<<< 1 2015-05-20 19:07:14,713 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 8 2015-05-20 19:07:14,720 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:rainbow954
+>>>>>>>LOG4J<<<<<<< 1 2015-05-20 19:08:19,216 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 9 2015-05-20 19:08:19,224 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:rainbow954
+>>>>>>>LOG4J<<<<<<< 0 2015-05-20 19:11:35,180 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 7 2015-05-20 19:11:35,187 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:rainbow954
+>>>>>>>LOG4J<<<<<<< 0 2015-05-20 19:13:19,983 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 10 2015-05-20 19:13:19,993 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:rainbow954
+>>>>>>>LOG4J<<<<<<< 0 2015-05-20 19:26:10,196 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 9 2015-05-20 19:26:10,205 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:rainbow954
+>>>>>>>LOG4J<<<<<<< 0 2015-05-20 19:29:09,002 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 7 2015-05-20 19:29:09,009 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:rainbow954
+>>>>>>>LOG4J<<<<<<< 0 2015-05-20 19:30:03,898 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - start to valid user in mongodb
+>>>>>>>LOG4J<<<<<<< 8 2015-05-20 19:30:03,906 ERROR [com.train.auction.dao.impl.mongo.AuctionUserDaoMongo] - get valid user:rainbow954
