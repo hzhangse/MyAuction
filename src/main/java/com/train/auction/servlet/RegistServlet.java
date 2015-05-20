@@ -31,16 +31,11 @@ public class RegistServlet extends BaseServlet {
 					email);
 			response.setContentType("text/html; charset=GBK");
 
-			try {
+			JSONObject jsonObj = new JSONObject(result);
 
-				// 把验证的userId封装成JSONObject
-				JSONObject jsonObj = new JSONObject(result);
+			// 输出响应
+			response.getWriter().println(jsonObj.toString());
 
-				// 输出响应
-				response.getWriter().println(jsonObj.toString());
-			} catch (JSONException ex) {
-				ex.printStackTrace();
-			}
 		}
 	}
 }

@@ -3,6 +3,7 @@ package com.train.mongo;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import junit.framework.Assert;
 
@@ -56,33 +57,52 @@ public class AuctionServiceTool {
 
 	public void saveUser() {
 		AuctionUser user = new AuctionUser();
-		user.setUsername("tomcat");
+		user.setUsername("rainbow954");
 		user.setEmail("rainbow954@163.com");
-		user.setUserpass("tomcat");
-
-		AuctionUser user1 = new AuctionUser();
-		user1.setUsername("mysql");
-		user1.setEmail("rainbow954@163.com");
-		user1.setUserpass("mysql");
-
+		user.setUserpass("rainbow");
 		userDao.save(user);
-		userDao.save(user1);
+		
+		user = new AuctionUser();
+		user.setUsername("angela");
+		user.setEmail("2387362072@qq.com");
+		user.setUserpass("rainbow");
+		userDao.save(user);
+		
+		user = new AuctionUser();
+		user.setUsername("admin");
+		user.setEmail("rainbow954@163.com");
+		user.setUserpass("admin");
+		userDao.save(user);
 
 	}
 
 	public void saveKind() {
 		Kind k1 = new Kind();
 		// k1.setId(new BigInteger("1"));
-		k1.setKindName("电脑硬件");
-		k1.setKindDesc("这里并不是很主流的产品，但价格绝对令你心动");
+		k1.setKindName("IT产品");
+		k1.setKindDesc("电脑，台式机，笔记本，显卡，内存，零配件......");
 
+		
 		Kind k2 = new Kind();
+		// k1.setId(new BigInteger("1"));
+		k2.setKindName("家装设备");
+		k2.setKindDesc("厨卫，电器等");
+		
+		
+		Kind k3 = new Kind();
+		// k1.setId(new BigInteger("1"));
+		k3.setKindName("汽车");
+		k3.setKindDesc("整车及零配件");
+		
+		Kind k4 = new Kind();
 		// k1.setId(new BigInteger("2"));
-		k2.setKindName("房产");
-		k2.setKindDesc("提供非常稀缺的房源");
+		k4.setKindName("电子产品");
+		k4.setKindDesc("手机，电视，pad，mp3");
+		
 		kindDao.save(k1);
 		kindDao.save(k2);
-
+		kindDao.save(k3);
+		kindDao.save(k4);
 	}
 
 	public void saveState() {
@@ -100,32 +120,29 @@ public class AuctionServiceTool {
 		stateDao.save(s1);
 	}
 
-	public void saveBid1(Item item) {
-
+	
+	
+	
+	public void saveBid(Item item,String username) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTimeInMillis(new Date().getTime());
-		cal.add(Calendar.DAY_OF_YEAR, -2);
-		saveBid("mysql", 250, cal.getTime(), item);
+		Random r = new Random();
+		cal.add(Calendar.DAY_OF_YEAR, -1*(r.nextInt(5)));
+		double d= r.nextInt(10);
+		saveBid(username, item.getInitPrice()+d, cal.getTime(), item);
 
 	}
 
-	public void saveBid2(Item item) {
-
+	public void saveBid(Item item,String username,double price) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTimeInMillis(new Date().getTime());
-		cal.add(Calendar.DAY_OF_YEAR, -6);
-		saveBid("tomcat", 25000, cal.getTime(), item);
+		Random r = new Random();
+		cal.add(Calendar.DAY_OF_YEAR, -1*(r.nextInt(5)));
+		
+		saveBid(username, price, cal.getTime(), item);
 
 	}
 
-	public void saveBid3(Item item) {
-
-		Calendar cal = Calendar.getInstance();
-		cal.setTimeInMillis(new Date().getTime());
-		cal.add(Calendar.DAY_OF_YEAR, -1);
-		saveBid("mysql", 20000, cal.getTime(), item);
-
-	}
 
 	public void saveBid(String user, double price, Date time, Item item) {
 		Bid bid = new Bid();
@@ -163,43 +180,55 @@ public class AuctionServiceTool {
 
 		Calendar calend = Calendar.getInstance();
 		calend.setTimeInMillis(new Date().getTime());
-		calend.add(Calendar.DAY_OF_YEAR, 30);
+		calend.add(Calendar.DAY_OF_YEAR, 3);
 
-		Item item = saveItem("主板", "老式主板", "老主板，还可以用", caladd.getTime(),
-				calend.getTime(), 230, 250, this.getKind("电脑硬件"),
-				getState("拍卖中"), this.getUser("tomcat"), null);
+		Item item = saveItem("iphone6s", "苹果6s手机", "公司年会奖品，全新未开封", caladd.getTime(),
+				calend.getTime(), 3000, 4500, this.getKind("电子产品"),
+				getState("拍卖中"), this.getUser("admin"), null);
 
-		this.saveBid1(item);
+		this.saveBid(item,"rainbow954");
+		this.saveBid(item,"angela");
 
 		caladd.setTimeInMillis(new Date().getTime());
-		caladd.add(Calendar.DAY_OF_YEAR, -2);
+		caladd.add(Calendar.DAY_OF_YEAR, -10);
 
 		calend.setTimeInMillis(new Date().getTime());
-		calend.add(Calendar.DAY_OF_YEAR, -1);
+		calend.add(Calendar.DAY_OF_YEAR, 3);
 
-		saveItem("显卡", "老式显卡", "老显卡，还可以用", caladd.getTime(), calend.getTime(),
-				210, 210, this.getKind("电脑硬件"), getState("流拍"),
-				this.getUser("mysql"), null);
+		item = saveItem("金士顿DDR-3内存-2G", "终身质保，全球售后", "2G 单条", caladd.getTime(), calend.getTime(),
+				100, 210, this.getKind("IT产品"), getState("拍卖中"),
+				this.getUser("admin"), null);
+		this.saveBid(item,"rainbow954");
+		this.saveBid(item,"angela");
+
 
 		calend.setTimeInMillis(new Date().getTime());
-		calend.add(Calendar.DAY_OF_YEAR, -1);
+		calend.add(Calendar.DAY_OF_YEAR, 1);
 
-		Item item3 = saveItem("老房子", "40年的老房子", "40年的老房子，还可以用",
-				caladd.getTime(), calend.getTime(), 21000, 25000,
-				getKind("房产"), getState("拍卖成功"), this.getUser("mysql"),
-				this.getUser("tomcat"));
+		Item item3 = saveItem("宝马X5高配版", "5万公里", "没有任何事故，包括挂蹭",
+				caladd.getTime(), calend.getTime(), 210000, 260000,
+				getKind("汽车"), getState("拍卖中"), this.getUser("admin"),
+				null);
 
-		this.saveBid2(item3);
-		this.saveBid3(item3);
+		Item item4 = saveItem("苏泊尔电饭锅", "终身质保，全球售后", "公司年会奖品，全新未开封",
+				caladd.getTime(), calend.getTime(), 200, 280,
+				getKind("家装设备"), getState("拍卖中"), this.getUser("rainbow954"),
+				null);
+		
+		saveBid(item3,"rainbow954",250000);
+		saveBid(item3,"angela");
+		saveBid(item4,"admin");
+		saveBid(item4,"angela");
+		
 
 		Item item1 = this.itemDao.get(item.getId());
 
 		AuctionUser user1 = this.bidDao.findUserByItemAndPrice(item3.getId(),
-				new Double(25000));
+				new Double(250000));
 
 		Assert.assertTrue(item1 != null);
 		Assert.assertTrue(this.bidDao
-				.findByUser(this.getUser("tomcat").getId()) != null);
+				.findByUser(this.getUser("rainbow954").getId()) != null);
 		Assert.assertTrue(user1 != null);
 	}
 
@@ -242,22 +271,22 @@ public class AuctionServiceTool {
 
 	@Test
 	public void testBidDao() {
-		this.getUser("tomcat");
-		this.bidDao.findByUser(this.getUser("tomcat").getId());
+		this.getUser("rainbow954");
+		this.bidDao.findByUser(this.getUser("rainbow954").getId());
 
 	}
 
 	@Test
 	public void testItemDao() {
 		List<Item> result = null;
-		Assert.assertTrue(this.itemDao.findItemByKind(this.getKind("房产")
+		Assert.assertTrue(this.itemDao.findItemByKind(this.getKind("汽车")
 				.getId()) != null);
-		result = this.itemDao.findItemByKind(this.getKind("房产").getId());
+		result = this.itemDao.findItemByKind(this.getKind("汽车").getId());
 		for (Item item : result)
 			System.out.println(item.getItemName() + "_"
 					+ item.getKind().getKindName());
 
-		result = itemDao.findItemByOwner(this.getUser("mysql").getId());
+		result = itemDao.findItemByOwner(this.getUser("admin").getId());
 		for (Item item : result)
 			System.out.println(item.getItemName() + "_"
 					+ item.getOwner().getUsername());
@@ -269,10 +298,10 @@ public class AuctionServiceTool {
 			System.out.println(item.getItemName() + "_"
 					+ item.getItemState().getStateName());
 
-		Assert.assertTrue(this.itemDao.findItemByWiner(this.getUser("tomcat")
+		Assert.assertTrue(this.itemDao.findItemByWiner(this.getUser("rainbow954")
 				.getId()) != null);
 
-		result = this.itemDao.findItemByWiner(this.getUser("tomcat").getId());
+		result = this.itemDao.findItemByWiner(this.getUser("rainbow954").getId());
 		for (Item item : result)
 			System.out.println(item.getItemName() + "_"
 					+ item.getWiner().getUsername());
@@ -280,9 +309,9 @@ public class AuctionServiceTool {
 
 	@Test
 	public void testUserDao() {
-		AuctionUser user = this.userDao.findUserByNameAndPass("tomcat",
-				"tomcat");
-		Assert.assertTrue(user.getUserpass().equalsIgnoreCase("tomcat"));
+		AuctionUser user = this.userDao.findUserByNameAndPass("rainbow954",
+				"rainbow");
+		Assert.assertTrue(user.getUserpass().equalsIgnoreCase("rainbow"));
 	}
 
 	
