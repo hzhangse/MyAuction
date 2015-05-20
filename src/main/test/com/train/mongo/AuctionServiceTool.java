@@ -29,6 +29,7 @@ import com.train.auction.model.Item;
 import com.train.auction.model.Kind;
 import com.train.auction.model.State;
 import com.train.auction.service.AuctionManager;
+import com.train.auction.service.impl.AuctionManagerImpl;
 
 public class AuctionServiceTool {
 
@@ -44,7 +45,13 @@ public class AuctionServiceTool {
 	public AuctionServiceTool(){
 		
 	}
-	
+	@Test
+	public void testSendMail(){
+		AuctionUser au = this.getUser("rainbow954");
+		Item item = new Item();
+		item.setItemName("test");
+		((AuctionManagerImpl)this.service).sendMail(au, item, "");
+	}
 //	public AuctionServiceTool(AuctionUserDao userDao,
 //			KindDao kindDao, BidDao bidDao, ItemDao itemDao,
 //			StateDao stateDao) {
@@ -319,8 +326,8 @@ public class AuctionServiceTool {
 	public static void initSpring() {
 		app = new ClassPathXmlApplicationContext(new String[] {
 
-		"classpath:mongoDaoContext.xml" });
-		// service = (AuctionManager) app.getBean("mgr");
+		"classpath:mongoDaoContext.xml","classpath:applicationContext.xml" });
+		service = (AuctionManager) app.getBean("mgr");
 		userDao = (AuctionUserDaoMongo) app.getBean("auctionUserDao");
 		kindDao = (KindDaoMongo) app.getBean("kindDao");
 		bidDao = (BidDaoMongo) app.getBean("bidDao");
