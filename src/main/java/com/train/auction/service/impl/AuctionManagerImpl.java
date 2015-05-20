@@ -397,6 +397,15 @@ public class AuctionManagerImpl implements AuctionManager
 		}
 	}
 
+	public void sendMail(AuctionUser au,Item item,String content){
+		SimpleMailMessage msg = new SimpleMailMessage(this.message);
+		msg.setTo(au.getEmail());
+		msg.setText("Dear "
+			+ au.getUsername()
+			+ ", 谢谢你参与竞价，你的竞价的物品的是: "
+			+ item.getItemName());
+		mailSender.send(msg);
+	}
 	/**
 	 * 增加新的竞价，并对竞价用户发邮件通知
 	 * @param itemId 物品id;
