@@ -203,10 +203,10 @@ public class AuctionServiceTool {
 
 
 		calend.setTimeInMillis(new Date().getTime());
-		calend.add(Calendar.DAY_OF_YEAR, 1);
+		calend.add(Calendar.DAY_OF_YEAR, -1);
 
 		Item item3 = saveItem("宝马X5高配版", "5万公里", "没有任何事故，包括挂蹭",
-				caladd.getTime(), calend.getTime(), 210000, 260000,
+				caladd.getTime(), calend.getTime(), 210000, 250000,
 				getKind("汽车"), getState("拍卖中"), this.getUser("admin"),
 				null);
 

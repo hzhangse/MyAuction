@@ -21,7 +21,7 @@
 	<bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<!-- 指定发送邮件的SMTP服务器地址 -->
-		<property name="host" value="smtp.163.com"/>
+		<property name="host" value="smtp.qq.com"/>
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.auth">true</prop>
@@ -29,13 +29,13 @@
 			</props>
 		</property>
 		<!-- 指定登录邮箱的用户名、密码 -->
-		<property name="username" value="auction_rainbow954@163.com"/>
+		<property name="username" value="2387362072@qq.com"/>
 		<property name="password" value="rainbow954"/>
 	</bean>
 	<!-- 定义SimpleMailMessage Bean，它代表了一份邮件 -->
 	<bean id="mailMessage"
 		class="org.springframework.mail.SimpleMailMessage">
-		<property name="from" value="auction_rainbow954@163.com"/>
+		<property name="from" value="2387362072@qq.com"/>
 		<!-- 指定邮件标题 -->
 		<property name="subject" value="竞价通知"/>
 	</bean>
@@ -71,7 +71,7 @@
 	<bean id="myTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
 		<property name="jobDetail" ref="myJob" />
 		<property name="startDelay" value="0" />
-		<property name="repeatInterval" value="16400000" />
+		<property name="repeatInterval" value="10000" />
 	</bean>
 	
 	<bean id="myJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
@@ -82,7 +82,7 @@
 		<property name="jobClass" value="com.train.auction.schedule.CheckWinnerJob"/>
 		<property name="jobDataAsMap">
 			<map>
-				<entry key="myTask" value-ref="checkWiner" />
+				<entry key="task" value-ref="checkWiner" />
 			</map>
 		</property>
 	</bean>
