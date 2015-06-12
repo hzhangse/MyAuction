@@ -4,7 +4,7 @@ create database auction;
 
 use auction;
 
-#ÓÃ»§±í
+#ç”¨æˆ·è¡¨
 create table auction_user(
   user_id bigint(20) auto_increment,
   username varchar(50) not null,
@@ -17,7 +17,7 @@ create table auction_user(
 INSERT INTO auction_user (username,userpass,email) VALUES ('tomcat','tomcat','spring_test@163.com');
 INSERT INTO auction_user (username,userpass,email) VALUES ('mysql','mysql','spring_test@163.com');
 
-#ÎïÆ·ÖÖÀà±í
+#ç‰©å“ç§ç±»è¡¨
 create table kind(
   kind_id bigint(20) auto_increment,
   kind_name varchar(50) not null, 
@@ -25,21 +25,21 @@ create table kind(
   primary key(kind_id)
 );
 
-INSERT INTO kind (kind_name,kind_desc) VALUES ('µçÄÔÓ²¼ş','ÕâÀï²¢²»ÊÇºÜÖ÷Á÷µÄ²úÆ·£¬µ«¼Û¸ñ¾ø¶ÔÁîÄãĞÄ¶¯');
-INSERT INTO kind (kind_name,kind_desc) VALUES ('·¿²ú','Ìá¹©·Ç³£Ï¡È±µÄ·¿Ô´');
+INSERT INTO kind (kind_name,kind_desc) VALUES ('ç”µè„‘ç¡¬ä»¶','è¿™é‡Œå¹¶ä¸æ˜¯å¾ˆä¸»æµçš„äº§å“ï¼Œä½†ä»·æ ¼ç»å¯¹ä»¤ä½ å¿ƒåŠ¨');
+INSERT INTO kind (kind_name,kind_desc) VALUES ('æˆ¿äº§','æä¾›éå¸¸ç¨€ç¼ºçš„æˆ¿æº');
 
-#ÎïÆ·×´Ì¬±í
+#ç‰©å“çŠ¶æ€è¡¨
 create table state(
   state_id bigint(20) auto_increment,
   state_name varchar(10),
   primary key(state_id)
 );
 
-INSERT INTO state (state_name) VALUES ('ÅÄÂôÖĞ');
-INSERT INTO state (state_name) VALUES ('ÅÄÂô³É¹¦');
-INSERT INTO state (state_name) VALUES ('Á÷ÅÄ');
+INSERT INTO state (state_name) VALUES ('æ‹å–ä¸­');
+INSERT INTO state (state_name) VALUES ('æ‹å–æˆåŠŸ');
+INSERT INTO state (state_name) VALUES ('æµæ‹');
 
-#ÎïÆ·±í
+#ç‰©å“è¡¨
 create table item(
   item_id bigint(20) auto_increment,
   item_name varchar(255) not null,
@@ -60,17 +60,17 @@ create table item(
   FOREIGN KEY(state_id) REFERENCES state(state_id)
 ); 
 
-# ÅÄÂôÖĞµÄÎïÆ·
+# æ‹å–ä¸­çš„ç‰©å“
 INSERT INTO item ( item_name , item_remark , item_desc, kind_id, addtime , endtime, init_price,  max_price,  owner_id,  winer_id,  state_id)
-	VALUES ( 'Ö÷°å', 'ÀÏÊ½Ö÷°å', 'ÀÏÖ÷°å£¬»¹¿ÉÒÔÓÃ', 1, CURDATE()-5, CURDATE() + INTERVAL 30 DAY , 230, 250, 1,  null,  1);
-# Á÷ÅÉµÄÎïÆ·
+	VALUES ( 'ä¸»æ¿', 'è€å¼ä¸»æ¿', 'è€ä¸»æ¿ï¼Œè¿˜å¯ä»¥ç”¨', 1, CURDATE()-5, CURDATE() + INTERVAL 30 DAY , 230, 250, 1,  null,  1);
+# æµæ´¾çš„ç‰©å“
 INSERT INTO item ( item_name , item_remark , item_desc, kind_id, addtime , endtime, init_price,  max_price,  owner_id,  winer_id,  state_id)
-	      VALUES ( 'ÏÔ¿¨', 'ÀÏÊ½ÏÔ¿¨', 'ÀÏÏÔ¿¨£¬»¹¿ÉÒÔÓÃ', 1, CURDATE()-1, CURDATE()-2, 210, 210, 2,  null,  3);
-# ±»¾ºµÃµÄÎïÆ·
+	      VALUES ( 'æ˜¾å¡', 'è€å¼æ˜¾å¡', 'è€æ˜¾å¡ï¼Œè¿˜å¯ä»¥ç”¨', 1, CURDATE()-1, CURDATE()-2, 210, 210, 2,  null,  3);
+# è¢«ç«å¾—çš„ç‰©å“
 INSERT INTO item ( item_name , item_remark , item_desc, kind_id, addtime , endtime, init_price,  max_price,  owner_id,  winer_id,  state_id)
-	VALUES ( 'ÀÏ·¿×Ó', 'ÀÏÊ½·¿×Ó', '40ÄêµÄÀÏ·¿×Ó', 2, CURDATE()-1, CURDATE()-5, 21000, 25000, 2,  1,  2);
+	VALUES ( 'è€æˆ¿å­', 'è€å¼æˆ¿å­', '40å¹´çš„è€æˆ¿å­', 2, CURDATE()-1, CURDATE()-5, 21000, 25000, 2,  1,  2);
 
-#¾º±êÀúÊ·±í
+#ç«æ ‡å†å²è¡¨
 create table bid(
   bid_id bigint(20) auto_increment,
   user_id bigint(20) not null,
